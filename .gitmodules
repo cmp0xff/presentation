@@ -1,3 +1,6 @@
 [submodule "theme-UzK"]
 	path = theme-UzK
 	url = https://github.com/solstice/uzk-theme
+[submodule "TeX-preambles"]
+	path = TeX-preambles
+	url = https://github.com/cmp0xff/TeX-preambles
