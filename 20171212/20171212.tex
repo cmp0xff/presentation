@@ -81,6 +81,14 @@ Institut de Ci\`encies del Cosmos (ICCUB), Universitat de Barcelona, Spain}
   \titlepage
 \end{frame}
 
+\begin{frame}{Outline}
+  \tableofcontents
+  % You might wish to add the option [pausesections]
+\end{frame}
+
+
+\section{Introduction}
+
 \section{Classical model}
 
 \begin{itemize}
@@ -89,17 +97,18 @@ Institut de Ci\`encies del Cosmos (ICCUB), Universitat de Barcelona, Spain}
 \dd s^2 = -\rfun{N^2}{t}\,\dd t^2
 +\varkappa^{-1/2}\ee^{2\rfun{\alpha}{t}}\,\dd\Omega_3^2,
 \end{align}
-where $\varkappa = 8\pp\nG$, $\dd\Omega_3^2$ is dimensionless, and the scale 
-factor is $a = \varkappa^{-1/2}\ee^\alpha$.
+where $\varkappa = 8\pp\nG$, $\dd\Omega_3^2$ is the dimensionless spacial 
+metric, and the scale factor is $a = \varkappa^{-1/2}\ee^\alpha$.
 \item Homogeneous Klein--Gordon field with an exponential potential 
-$V\ee^{\lambda\phi}$, $\lambda, V\in \BbbR$.
+$V\ee^{\lambda\phi}$ (dubbed Liouville), $\lambda, V\in \BbbR$.
 
 \item Total action
 \begin{align}
-\mscrS &= S_{\text{EH}} + S_\text{GHY} + S_\text{KG} = C\cdot\int\dd t\,L, \\
-L &= \varkappa^{3/2}N\ee^{3\alpha}\rbr{
--\frac{3}{\varkappa}\frac{\dot{\alpha}^2}{N^2}
-+\mscrl\frac{\dot{\phi}^2}{2N^2}z-V\ee^{\lambda\phi}},
+\mscrS &= S_{\text{Einstein--Hilbert}} + S_\text{Gibbons--Hawking--York} + 
+S_\text{Liouville} = \Omega\int\dd t\,L \nonumber \\
+&\coloneqq \Omega\int\dd t\, \varkappa^{3/2}N\ee^{3\alpha}
+\rbr{-\frac{3}{\varkappa}\frac{\dot{\alpha}^2}{N^2}
++\mscrl\frac{\dot{\phi}^2}{2N^2}-V\ee^{\lambda\phi}},
 \end{align}
 in which dot means $\dd/\dd t$, $\mscrl = \pm 1$ corresponds to quintessence / 
 phantom models, respectively.
@@ -108,13 +117,19 @@ phantom models, respectively.
 \begin{align}
 \overline{N} \coloneqq N\ee^{-3\alpha},
 \end{align}
-the effective action transforms to
+the effective Lagrangian transforms to
 \begin{align}
-S = \int \dd t\,\L = \int \dd t\,\varkappa^{3/2}\overline{N}\rbr{
--\mscrs\frac{3}{\varkappa}\frac{\dot{\alpha}^2}{\overline{N}^2}
-+\mscrl\mscrs\frac{\dot{\phi}^2}{2\overline{N}^2} - V}
+L = \varkappa^{3/2}\overline{N}
+\rbr{-\frac{3}{\varkappa}\frac{\dot{\alpha}^2}{\overline{N}^2}
++\mscrl\frac{\dot{\phi}^2}{2\overline{N}^2} - V\ee^{\lambda\phi+6\alpha}}
 \end{align}
 
+\item
+\begin{align}
+\Delta \coloneqq \lambda^2 - 6\mscrl\varkappa,\quad
+s \coloneqq \sgn \Delta,\quad
+g \coloneqq \sqrt{\vbr{\Delta}} \equiv \sqrt{\mscrs\Delta},
+\end{align}
 
 
 \end{itemize}
