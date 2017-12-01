@@ -34,7 +34,7 @@
 %jura,        %% Rechtswissenschaftliche Fakultaet
 %medizin,     %% Medizinische Fakultaet
 %philo,       %% Philosophische Fakultaet
-matnat,      %% Mathematisch-Naturwissenschaftliche Fakultaet
+%matnat,      %% Mathematisch-Naturwissenschaftliche Fakultaet
 %human,       %% Humanwissenschaftliche Fakultaet
 %verw,        %% Universitaetsverwaltung
 %nav,         %% Schaltet die Navigationssymbole ein
@@ -92,45 +92,57 @@ Institut de Ci\`encies del Cosmos (ICCUB), Universitat de Barcelona, Spain}
 \section{Classical model}
 
 \begin{itemize}
-\item Consider a flat Robertson--Walker metric
-\begin{align}
-\dd s^2 = -\rfun{N^2}{t}\,\dd t^2
-+\varkappa^{-1/2}\ee^{2\rfun{\alpha}{t}}\,\dd\Omega_3^2,
-\end{align}
-where $\varkappa = 8\pp\nG$, $\dd\Omega_3^2$ is the dimensionless spacial 
-metric, and the scale factor is $a = \varkappa^{-1/2}\ee^\alpha$.
-\item Homogeneous Klein--Gordon field with an exponential potential 
-$V\ee^{\lambda\phi}$ (dubbed Liouville), $\lambda, V\in \BbbR$.
+\item Flat Robertson--Walker metric
+$\dd s^2 = -\rfun{N^2}{t}\,\dd t^2
++\varkappa^{-1/2}\ee^{2\rfun{\alpha}{t}}\,\dd\Omega_3^2$,
+where $\varkappa = 8\pp\nG$, $\dd\Omega_3^2$ dimensionless spacial 
+metric
+\item Homogeneous real Klein--Gordon with potential
+(dubbed Liouville) $V\ee^{\lambda\phi}$ , $\lambda, V\in \BbbR$.
 
-\item Total action
+\item Total action $\mscrS = S_{\text{EH}} + S_\text{GHY} + S_\text{L}
+= \int\dd\Omega_3^2\int\dd t\,L$,
 \begin{align}
-\mscrS &= S_{\text{Einstein--Hilbert}} + S_\text{Gibbons--Hawking--York} + 
-S_\text{Liouville} = \Omega\int\dd t\,L \nonumber \\
-&\coloneqq \Omega\int\dd t\, \varkappa^{3/2}N\ee^{3\alpha}
+%S_{\text{Einstein--Hilbert}} + S_\text{Gibbons--Hawking--York} + 
+%S_\text{Liouville}
+L&\coloneqq \varkappa^{3/2}N\ee^{3\alpha}
 \rbr{-\frac{3}{\varkappa}\frac{\dot{\alpha}^2}{N^2}
 +\mscrl\frac{\dot{\phi}^2}{2N^2}-V\ee^{\lambda\phi}},
 \end{align}
-in which dot means $\dd/\dd t$, $\mscrl = \pm 1$ corresponds to quintessence / 
-phantom models, respectively.
+in which dot means $\dd/\dd t$, $\mscrl = \pm 1$ corresponds to quintessence
+/ phantom model, respectively.
 
-\item Choosing
-\begin{align}
-\overline{N} \coloneqq N\ee^{-3\alpha},
-\end{align}
-the effective Lagrangian transforms to
+\item Choosing $\overline{N} \coloneqq N\ee^{-3\alpha}$, the effective
+Lagrangian transforms to
 \begin{align}
 L = \varkappa^{3/2}\overline{N}
 \rbr{-\frac{3}{\varkappa}\frac{\dot{\alpha}^2}{\overline{N}^2}
 +\mscrl\frac{\dot{\phi}^2}{2\overline{N}^2} - V\ee^{\lambda\phi+6\alpha}}
 \end{align}
 
-\item
+\item Letting $\Delta \coloneqq \lambda^2 - 6\mscrl\varkappa$,
+$s \coloneqq \sgn \Delta$,
+$g \coloneqq \sqrt{\vbr{\Delta}} \equiv \sqrt{\mscrs\Delta}$,
+the rescaled special orthogonal transformation
 \begin{align}
-\Delta \coloneqq \lambda^2 - 6\mscrl\varkappa,\quad
-s \coloneqq \sgn \Delta,\quad
-g \coloneqq \sqrt{\vbr{\Delta}} \equiv \sqrt{\mscrs\Delta},
+\begin{pmatrix}
+\alpha \\ \phi
+\end{pmatrix} = \frac{1}{g}
+\begin{pmatrix}
+\lambda & -\mscrl\kappa \\
+-6 & \lambda
+\end{pmatrix}
+\begin{pmatrix}
+\mscrs_\beta \beta \\ \mscrs_\chi \chi
+\end{pmatrix}\qquad\text{where } \mscrs_\beta, \mscrs_\chi = \pm 1
 \end{align}
-
+gives the decoupled Lagrangian
+\begin{align}
+L = \varkappa^{3/2}\overline{N}
+\rbr{-\mscrs\frac{3}{\varkappa}\frac{\dot{\beta}^2}{\overline{N}^2}
++\mscrl\mscrs\frac{\dot{\chi}^2}{2\overline{N}^2}
+-V\ee^{\mscrs\cdot \mscrs_\chi\cdot g\chi}},
+\end{align}
 
 \end{itemize}
 
