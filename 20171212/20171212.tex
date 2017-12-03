@@ -15,10 +15,11 @@
 
 % ':=' as \coloneqq
 \usepackage{mathtools}
+\usepackage{siunitx}
+\usepackage{cleveref}
 
 \input{./math-single.tex}
 \input{./math-brac.tex}
-\usepackage{siunitx}
 \input{./phys-chem.tex}
 
 
@@ -115,19 +116,19 @@ in which dot means $\dd/\dd t$, $\mscrl = \pm 1$ corresponds to quintessence
 \item Choosing $\overline{N} \coloneqq N\ee^{-3\alpha}$, the effective
 Lagrangian transforms to
 \begin{align}
-L = \varkappa^{3/2}\overline{N}
+L_\text{e} = \varkappa^{3/2}\overline{N}
 \rbr{-\frac{3}{\varkappa}\frac{\dot{\alpha}^2}{\overline{N}^2}
 +\mscrl\frac{\dot{\phi}^2}{2\overline{N}^2} - V\ee^{\lambda\phi+6\alpha}}
 \end{align}
 
-\item Letting $\Delta \coloneqq \lambda^2 - 6\mscrl\varkappa$,
-$\mscrs \coloneqq \sgn \Delta$,
+\item Defining $\Delta \coloneqq \lambda^2 - 6\mscrl\varkappa$,
+$\mscrs \coloneqq \sgn \Delta$ and
 $g \coloneqq \mscrs \sqrt{\vbr{\Delta}} \equiv \mscrs\sqrt{\mscrs\Delta}$,
 the rescaled special orthogonal transformation
 \begin{align}
 \begin{pmatrix}
 \alpha \\ \phi
-\end{pmatrix} = \frac{1}{g}
+\end{pmatrix} = \frac{\mscrs}{g}
 \begin{pmatrix}
 \lambda & -\mscrl\kappa \\
 -6 & \lambda
@@ -138,11 +139,39 @@ the rescaled special orthogonal transformation
 \end{align}
 gives the decoupled Lagrangian
 \begin{align}
-L = \varkappa^{3/2}\overline{N}
+L_\text{d} = \varkappa^{3/2}\overline{N}
 \rbr{-\mscrs\frac{3}{\varkappa}\frac{\dot{\beta}^2}{\overline{N}^2}
 +\mscrl\mscrs\frac{\dot{\chi}^2}{2\overline{N}^2}
 -V\ee^{\mscrs_\chi g\chi}},
+\label{eq:lagrangian-decoupled}
 \end{align}
+
+\item Since $\beta$ is cyclic in \cref{eq:lagrangian-decoupled},
+the second Friedmann equation can be integrated
+\begin{align}
+\text{const.} \equiv p_\beta \coloneqq \frpa{L_\text{d}}{\dot{\beta}} &=
+-6\mscrs\varkappa^{1/2}\frac{\dot{\beta}}{\overline{N}} \\
+&=
+-6\mscrs\mscrs_\beta\frac{\varkappa^{1/2}}{g}
+\frac{\lambda\dot{\alpha}+\mscrl\varkappa\dot{\phi}}{\overline{N}}.
+\end{align}
+
+\item Taking the gauge $\overline{N} = -6\mscrs\sqrt{\varkappa}\dot{\beta}/p_\beta$, the first Friedmann equation can be integrated
+\begin{align}
+\ee^{6\alpha-\lambda\phi} \equiv \ee^{g\mscrs_\chi\chi} =
+\frac{p_\beta^2}{12\varkappa^2\vbr{V}}
+\rfun{f^2}{\sqrt{\frac{3}{2\varkappa}}
+\rbr{\alpha\lambda+\mscrl\varkappa\phi}},
+\\
+\rfun{f}{\gamma} \coloneqq
+\begin{cases}
+\rfun{\cosh}{\gamma+C} & \mscrl = +1, \mscrs\mscrv = +1, \\
+\rfun{\sinh}{\gamma+C} & \mscrl = +1, \mscrs\mscrv = -1, \\
+\rfun{\cos}{\gamma+C} & \mscrl = -1, \mscrs\mscrv = +1, \\
+\ii\rfun{\sin}{\gamma+C} & \mscrl = -1, \mscrs\mscrv = -1, \\
+\end{cases}
+\end{align}
+in which $\mscrv \coloneqq \sgn V$.
 
 \end{itemize}
 
