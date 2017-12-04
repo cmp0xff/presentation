@@ -1,7 +1,7 @@
 ﻿%% UzK - A BEAMER THEME FOR THE UNIVERSITY OF COLOGNE
 %% http://solstice.github.com/uzk-theme/
 
-\documentclass{beamer}
+\documentclass[9pt]{beamer}
 
 \input{./unicode.tex}
 \setmainlanguage{english}
@@ -158,20 +158,28 @@ the second Friedmann equation can be integrated
 
 \item Taking the gauge $\overline{N} = -6\mscrs\sqrt{\varkappa}\dot{\beta}/p_\beta$, the first Friedmann equation can be integrated
 \begin{align}
-\ee^{6\alpha+\lambda\phi} \equiv \ee^{g\mscrs_\chi\chi} =
-\frac{p_\beta^2}{12\varkappa^2\vbr{V}}
-\rfun{f^2}{\sqrt{\frac{3}{2\varkappa}}
-\rbr{\alpha\lambda+\mscrl\varkappa\phi}},
-\\
+\ee^{\mscrs_\chi g\chi} &= p_\beta^2/12\varkappa^2\vbr{V}\cdot
+\rfun{f^2}{s_\beta \sqrt{3/2\varkappa}\,g \beta}
+\quad\text{or}\\
+\ee^{6\alpha+\lambda\phi} &= p_\beta^2/12\varkappa^2\vbr{V}\cdot
+\rfun{f^2}{\sqrt{3/2\varkappa}\,\rbr{\lambda\alpha+\mscrl\varkappa\phi}},
+\end{align}
+in which $\mscrv \coloneqq \sgn V$, and
+\begin{align}
 \rfun{f}{\gamma} \coloneqq
 \begin{cases}
-\rfun{\cosh}{\gamma+C} & \mscrl = +1, \mscrs\mscrv = +1, \\
-\rfun{\sinh}{\gamma+C} & \mscrl = +1, \mscrs\mscrv = -1, \\
-\rfun{\cos}{\gamma+C} & \mscrl = -1, \mscrs\mscrv = +1, \\
-\ii\rfun{\sin}{\gamma+C} & \mscrl = -1, \mscrs\mscrv = -1, \\
+\rfun{\sech}{\gamma+C_{++}} & \rbr{\mscrl, \mscrs\mscrv} = \rbr{+,+}, \\
+\rfun{\csch}{\gamma+C_{+-}} & \rbr{\mscrl, \mscrs\mscrv} = \rbr{+,-} \\
+\rfun{\sec}{\gamma+C_{-+}} & \rbr{\mscrl, \mscrs\mscrv} = \rbr{-,+} \\
+\ii\rfun{\csc}{\gamma+C_{--}} & \rbr{\mscrl, \mscrs\mscrv} = \rbr{-,-} \\
 \end{cases}
 \end{align}
-in which $\mscrv \coloneqq \sgn V$.
+The last solution is not real.
+
+\item The trajectory equation for $\rbr{+,-}$ and $\rbr{-,+}$ contains two and infinite
+distinct solutions, respectively.
+
+\item 
 
 \end{itemize}
 
