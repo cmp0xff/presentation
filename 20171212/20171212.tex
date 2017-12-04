@@ -22,6 +22,9 @@
 \input{./math-brac.tex}
 \input{./phys-chem.tex}
 
+\usepackage[%style=numeric,
+			backend=biber]{biblatex}
+\addbibresource{20171212.bib}
 
 %% Falls Anzeige der \sections, \subsections etc. gewuenscht, kann zB.
 %% das infolines theme geladen werden. Wichtig ist jedoch, dass andere
@@ -139,24 +142,29 @@ the rescaled special orthogonal transformation
 \end{align}
 gives the decoupled Lagrangian
 \begin{align}
-L_\text{d} = \varkappa^{3/2}\overline{N}
+L = \varkappa^{3/2}\overline{N}
 \rbr{-\mscrs\frac{3}{\varkappa}\frac{\dot{\beta}^2}{\overline{N}^2}
 +\mscrl\mscrs\frac{\dot{\chi}^2}{2\overline{N}^2}
 -V\ee^{\mscrs_\chi g\chi}},
 \label{eq:lagrangian-decoupled}
 \end{align}
+the Euler--Lagrange equations w.r.t.\ $\overline{N}$, $\beta$ and
+$\chi$ will be called the first, second Friedmann eqs.\ and the
+Klein--Gordon eq., respectively.
 
 \item Since $\beta$ is cyclic in \cref{eq:lagrangian-decoupled},
 the second Friedmann equation can be integrated
 \begin{align}
-\text{const.} \equiv p_\beta \coloneqq \frpa{L_\text{d}}{\dot{\beta}} &=
+\text{const.} \equiv p_\beta \coloneqq \frpa{L}{\dot{\beta}} &=
 -6\mscrs\varkappa^{1/2}\frac{\dot{\beta}}{\overline{N}} \\
 &=
 -6\mscrs\mscrs_\beta\frac{\varkappa^{1/2}}{g}
 \frac{\lambda\dot{\alpha}+\mscrl\varkappa\dot{\phi}}{\overline{N}}.
 \end{align}
 
-\item Taking the gauge $\overline{N} = -6\mscrs\sqrt{\varkappa}\dot{\beta}/p_\beta$, the first Friedmann equation can be integrated
+\item For $p_\beta \neq 0$, taking the gauge $\overline{N} =
+-6\mscrs\sqrt{\varkappa}\dot{\beta}/p_\beta$, the first Friedmann equation
+can be integrated
 \begin{align}
 \ee^{\mscrs_\chi g\chi} &= p_\beta^2/12\varkappa^2\vbr{V}\cdot
 \rfun{f^2}{s_\beta \sqrt{3/2\varkappa}\,g \beta}
@@ -169,17 +177,28 @@ in which $\mscrv \coloneqq \sgn V$, and
 \rfun{f}{\gamma} \coloneqq
 \begin{cases}
 \rfun{\sech}{\gamma+C_{++}} & \rbr{\mscrl, \mscrs\mscrv} = \rbr{+,+}, \\
-\rfun{\csch}{\gamma+C_{+-}} & \rbr{\mscrl, \mscrs\mscrv} = \rbr{+,-} \\
-\rfun{\sec}{\gamma+C_{-+}} & \rbr{\mscrl, \mscrs\mscrv} = \rbr{-,+} \\
-\ii\rfun{\csc}{\gamma+C_{--}} & \rbr{\mscrl, \mscrs\mscrv} = \rbr{-,-} \\
+\rfun{\csch}{\gamma+C_{+-}} & \rbr{\mscrl, \mscrs\mscrv} = \rbr{+,-}, \\
+\rfun{\sec}{\gamma+C_{-+}} & \rbr{\mscrl, \mscrs\mscrv} = \rbr{-,+}, \\
+\ii\rfun{\csc}{\gamma+C_{--}} & \rbr{\mscrl, \mscrs\mscrv} = \rbr{-,-}. \\
 \end{cases}
 \end{align}
-The last solution is not real.
+The last solution is not real, whereas the first three cases are consistent
+with the Klein--Gordon equation.
 
-\item The trajectory equation for $\rbr{+,-}$ and $\rbr{-,+}$ contains two and infinite
-distinct solutions, respectively.
+\item The trajectory equation for $\rbr{+,-}$ and $\rbr{-,+}$ contains two
+and infinite distinct solutions, respectively.
 
-\item 
+\item For $p_\beta = 0$, one has $\beta \equiv \beta_0$ or $\phi-\phi_0 =
+-\mscrl\lambda\alpha/\kappa$, which is the familiar power-law special
+solution\footfullcite{Dabrowski2006}.
+
+\item Further integrating the first Friedmann equation demands $\rbr{+,-}$
+or $\rbr{-,+}$ to guarantee $\overline{N} > 0$, which is automatically
+consistent with the Klein--Gordon equation. Taking $\overline{N} =
+\rbr{2\varkappa^2\vbr{V}}^{-1/2}$ yields
+\begin{align}
+\ee^{\mscrs_\chi g \chi} = \cbr{2\kappa/g\rbr{t-t_0}}^2.
+\end{align}
 
 \end{itemize}
 
