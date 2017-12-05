@@ -50,14 +50,14 @@ latexfonts,  %% Verwendet die latex-beamer-Standardschrift
 
 \title{Integrable Cosmological Models with Liouville Scalar Fields}
 
-\author[Andrianov \and Lan \and Novikov \and \emph{Wang}]{
+\author[Andrianov \and Lan \and Novikov \and \underline{Wang}]{
 	Alexander A. Andrianov\inst{1,4} %\thanks{a.andrianov@spbu.ru}
 	\and
 	Chen Lan\inst{2} %\thanks{stlanchen@yandex.ru}
 	\and
 	Oleg O. Novikov\inst{1} %\thanks{o.novikov@spbu.ru}
 	\and 
-	\emph{Yi-Fan Wang}\inst{3}} %\thanks{yfwang@thp.uni-koeln.de}
+	\underline{Yi-Fan Wang}\inst{3}} %\thanks{yfwang@thp.uni-koeln.de}
 %{David Kusterer\thanks{ 
 %\href{mailto:kusterer@uni-koeln.de}{kusterer@uni-koeln.de} }%
 %  \and%
@@ -65,10 +65,10 @@ latexfonts,  %% Verwendet die latex-beamer-Standardschrift
 %Weiß\thanks{\href{mailto:bernd.weiss@wiso.uni-koeln.de}{
 %bernd.weiss@wiso.uni-koeln.de}}}
 
-\institute[Forschungsinstitut für Soziologie]{%
-Forschungsinstitut für Soziologie \\
-Greinstraße 2\\
-50939 Köln}
+%\institute[Forschungsinstitut für Soziologie]{%
+%Forschungsinstitut für Soziologie \\
+%Greinstraße 2\\
+%50939 Köln}
 
 \institute[SPBU \and ELI-ALPS \and UzK \and UB]{
 \inst{1} Saint-Petersburg State University, St.\ Petersburg 198504, Russia \and
@@ -93,16 +93,30 @@ Institut de Ci\`encies del Cosmos (ICCUB), Universitat de Barcelona, Spain}
 
 \section{Introduction}
 
+\begin{frame}%
+{Introduction}%
+{Introduction}
+\begin{itemize}
+	\item
+\end{itemize}
+\end{frame}
+
 \section{Classical model and the implicitised trajectories}
 
+\begin{frame}%
+{The Friedmann-Lemaître model}%
+{123}
 \begin{itemize}
 \item Flat Robertson--Walker metric
 $\dd s^2 = -\rfun{N^2}{t}\,\dd t^2
 +\varkappa^{-1/2}\ee^{2\rfun{\alpha}{t}}\,\dd\Omega_3^2$,
-where $\varkappa = 8\pp\nG$, $\dd\Omega_3^2$ dimensionless spacial 
-metric
-\item Homogeneous real Klein--Gordon with potential
-(dubbed Liouville) $V\ee^{\lambda\phi}$ , $\lambda, V\in \BbbR$.
+where $\varkappa \coloneqq 8\pp\nG$, $\dd\Omega_3^2$ dimensionless spacial 
+metric.
+
+\item Homogeneous real Klein--Gordon field with potential
+(dubbed \emph{Liouville}) $V\ee^{\lambda\phi}$, $\lambda, V\in \BbbR$,
+and kinetic term with sign $\mscrl = \pm 1$ (quintessence
+/ phantom model).
 
 \item Total action $\mscrS = S_{\text{EH}} + S_\text{GHY} + S_\text{L}
 = \int\dd\Omega_3^2\int\dd t\,L$,
@@ -113,13 +127,18 @@ L&\coloneqq \varkappa^{3/2}N\ee^{3\alpha}
 \rbr{-\frac{3}{\varkappa}\frac{\dot{\alpha}^2}{N^2}
 +\mscrl\frac{\dot{\phi}^2}{2N^2}-V\ee^{\lambda\phi}},
 \end{align}
-in which dot means $\dd/\dd t$, $\mscrl = \pm 1$ corresponds to quintessence
-/ phantom model, respectively.
+in which dot means $\dd/\dd t$ and $\mscrl = \pm 1$.
+\end{itemize}
+\end{frame}
 
+\begin{frame}%
+{Decoupling the variables}%
+{123}
+\begin{itemize}
 \item Choosing $\overline{N} \coloneqq N\ee^{-3\alpha}$, the effective
 Lagrangian transforms to
 \begin{align}
-L_\text{e} = \varkappa^{3/2}\overline{N}
+L = \varkappa^{3/2}\overline{N}
 \rbr{-\frac{3}{\varkappa}\frac{\dot{\alpha}^2}{\overline{N}^2}
 +\mscrl\frac{\dot{\phi}^2}{2\overline{N}^2} - V\ee^{\lambda\phi+6\alpha}}
 \end{align}
@@ -127,7 +146,7 @@ L_\text{e} = \varkappa^{3/2}\overline{N}
 \item Defining $\Delta \coloneqq \lambda^2 - 6\mscrl\varkappa$,
 $\mscrs \coloneqq \sgn \Delta$ and
 $g \coloneqq \mscrs \sqrt{\vbr{\Delta}} \equiv \mscrs\sqrt{\mscrs\Delta}$,
-the rescaled special orthogonal transformation
+the \emph{rescaled special orthogonal transformation}
 \begin{align}
 \begin{pmatrix}
 \alpha \\ \phi
@@ -145,36 +164,47 @@ gives the decoupled Lagrangian
 L = \varkappa^{3/2}\overline{N}
 \rbr{-\mscrs\frac{3}{\varkappa}\frac{\dot{\beta}^2}{\overline{N}^2}
 +\mscrl\mscrs\frac{\dot{\chi}^2}{2\overline{N}^2}
--V\ee^{\mscrs_\chi g\chi}},
+-V\ee^{\mscrs_\chi g\chi}}.
 \label{eq:lagrangian-decoupled}
 \end{align}
-the Euler--Lagrange equations w.r.t.\ $\overline{N}$, $\beta$ and
-$\chi$ will be called the first, second Friedmann eqs.\ and the
-Klein--Gordon eq., respectively.
 
+\item
+The Euler--Lagrange equations w.r.t.\ $\overline{N}$, $\beta$ and
+$\chi$ will be called the trsfed.\ first, second Friedmann eqs.\ and the
+Klein--Gordon eq., respectively.
+\end{itemize}
+\end{frame}
+
+\begin{frame}%
+{Implicitised integration}%
+{$p_\beta \neq 0$}
+\begin{itemize}
 \item Since $\beta$ is cyclic in \cref{eq:lagrangian-decoupled},
 the second Friedmann equation can be integrated
 \begin{align}
 \text{const.} \equiv p_\beta \coloneqq \frpa{L}{\dot{\beta}} &=
--6\mscrs\varkappa^{1/2}\frac{\dot{\beta}}{\overline{N}} \\
-&=
+-6\mscrs\varkappa^{1/2}\frac{\dot{\beta}}{\overline{N}}
+\equiv
 -6\mscrs\mscrs_\beta\frac{\varkappa^{1/2}}{g}
 \frac{\lambda\dot{\alpha}+\mscrl\varkappa\dot{\phi}}{\overline{N}}.
 \end{align}
 
-\item For $p_\beta \neq 0$, taking the gauge $\overline{N} =
--6\mscrs\sqrt{\varkappa}\dot{\beta}/p_\beta$, the first Friedmann equation
-can be integrated
+\item For $p_\beta \neq 0$, fixing the \emph{implicitising gauge}
+$\overline{N} = -6\mscrs\sqrt{\varkappa}\dot{\beta}/p_\beta$, the trsfed.\
+first Friedmann equation can be integrated
 \begin{align}
-\ee^{\mscrs_\chi g\chi} &= p_\beta^2/12\varkappa^2\vbr{V}\cdot
-\rfun{f^2}{s_\beta \sqrt{3/2\varkappa}\,g \beta}
-\quad\text{or}\\
-\ee^{6\alpha+\lambda\phi} &= p_\beta^2/12\varkappa^2\vbr{V}\cdot
-\rfun{f^2}{\sqrt{3/2\varkappa}\,\rbr{\lambda\alpha+\mscrl\varkappa\phi}},
+\ee^{\mscrs_\chi g\chi} &=
+\frac{p_\beta^2}{12\varkappa^2\vbr{V}}
+\rfun{S^2}{\mscrs_\beta \sqrt{\frac{3}{2\varkappa}}\,g \beta},
+%\ee^{\mscrs_\chi g\chi} &= p_\beta^2/12\varkappa^2\vbr{V}\cdot
+%\rfun{f^2}{s_\beta \sqrt{3/2\varkappa}\,g \beta}
+%\quad\text{or}\\
+%\ee^{6\alpha+\lambda\phi} &= p_\beta^2/12\varkappa^2\vbr{V}\cdot
+%\rfun{f^2}{\sqrt{3/2\varkappa}\,\rbr{\lambda\alpha+\mscrl\varkappa\phi}},
 \end{align}
 in which $\mscrv \coloneqq \sgn V$, and
 \begin{align}
-\rfun{f}{\gamma} \coloneqq
+\rfun{S}{\gamma} \coloneqq
 \begin{cases}
 \rfun{\sech}{\gamma+C_{++}} & \rbr{\mscrl, \mscrs\mscrv} = \rbr{+,+}, \\
 \rfun{\csch}{\gamma+C_{+-}} & \rbr{\mscrl, \mscrs\mscrv} = \rbr{+,-}, \\
@@ -182,25 +212,53 @@ in which $\mscrv \coloneqq \sgn V$, and
 \ii\rfun{\csc}{\gamma+C_{--}} & \rbr{\mscrl, \mscrs\mscrv} = \rbr{-,-}. \\
 \end{cases}
 \end{align}
-The last solution is not real, whereas the first three cases are consistent
-with the Klein--Gordon equation.
+\end{itemize}
+\end{frame}
 
-\item The trajectory equation for $\rbr{+,-}$ and $\rbr{-,+}$ contains two
-and infinite distinct solutions, respectively.
+\begin{frame}%
+{Integration}%
+{Discussions}
+\begin{itemize}
+\item The integrals are consistent with the trsfed.\ Klein--Gordon equation.
+\item The integral for $\rbr{+,+}$
+\begin{itemize}
+	\item has two asymptotes
+\end{itemize}
+\item The implicitised integral for $\rbr{+,-}$ 
+\begin{itemize}
+	\item contains two distinct solutions
+	\item has three asymptotes
+\end{itemize}
+\item The implicitised integral for $\rbr{-,+}$
+\begin{itemize}
+	\item contains infinite distinct solutions
+	\item has infinite asymptotes, which are pairwise parallel
+\end{itemize}
+\item The integral for $\rbr{-,-}$
+\begin{itemize}
+	\item is not real
+\end{itemize}
+\end{itemize}
+\end{frame}
 
+\begin{frame}%
+{Implicitised integration}%
+{$p_\beta = 0$}
+\begin{itemize}
 \item For $p_\beta = 0$, one has $\beta \equiv \beta_0$ or $\phi-\phi_0 =
 -\mscrl\lambda\alpha/\kappa$, which is the familiar power-law special
 solution\footfullcite{Dabrowski2006}.
 
 \item Further integrating the first Friedmann equation demands $\rbr{+,-}$
-or $\rbr{-,+}$ to guarantee $\overline{N} > 0$, which is automatically
-consistent with the Klein--Gordon equation. Taking $\overline{N} =
-\rbr{2\varkappa^2\vbr{V}}^{-1/2}$ yields
-\begin{align}
-\ee^{\mscrs_\chi g \chi} = \cbr{2\kappa/g\rbr{t-t_0}}^2.
-\end{align}
+or $\rbr{-,+}$ to guarantee $\overline{N} > 0$, and the result is
+automatically consistent with the trsfed.\ Klein--Gordon equation.
 
+\item Fixing $\overline{N} = \rbr{2\varkappa^2\vbr{V}}^{-1/2}$ yields
+\begin{align}
+\ee^{g\mscrs_\chi\chi} = \rbr{\frac{2\kappa}{g\rbr{t-t_0}}}^2.
+\end{align}
 \end{itemize}
+\end{frame}
 
 
 
@@ -214,9 +272,95 @@ H^\text{p} &= \overline{N}H_\perp + p_{\overline{N}} v^{\overline{N}},
 \\
 H_\perp &= -\mscrs\frac{p_\beta^2}{12\varkappa^{1/2}}
 +\mscrl\mscrs\frac{p_\chi^2}{2\varkappa^{3/2}}
-+\varkappa^{3/2}V\ee^{\mscrs_\chi g \chi}.
++\varkappa^{3/2}V\ee^{g\mscrs_\chi\chi}.
 \end{align}
 \item
+Applying the Dirac quantisation rules with the Laplace--Beltrami opeator for
+the generalised momenta, one gets the minisuperspace Wheeler--DeWitt
+equation $\widehat{H}_\perp \rfun{\Psi}{\beta,\chi} = 0$.
+
+\item
+Inserting the separating Ansatz $\rfun{\Psi}{\beta,\chi} =
+\ee^{-\ii k_\beta\mscrs_\beta\beta}\rfun{\psi}{\chi}$, the remaining
+equation turns out to be Besselian, and the full solutions are
+\begin{align}
+\rfun{\psi_\nu}{\chi} &= 
+C_1\rfun{\mathrm{B}_{\nu}^{(1)}}{\sigma}
++C_2\rfun{\mathrm{B}_{\nu}^{(2)}}{\sigma},
+\end{align}
+in which
+\begin{align}
+\nu &\coloneqq \sqrt{\frac{2\varkappa}{3}}\frac{k_\beta}{g},\quad
+\sigma^2 \coloneqq 
+\sqrt{8\varkappa^3\vbr{V}\ee^{g\mscrs_\chi\chi}}{\hslash^2 g^2},
+\label{eq:trsf-quantum-sigma}
+\end{align}
+and
+\begin{align}
+\rfun{\mathrm{B}^{(i)}_{\nu}}{\sigma} \coloneqq
+\begin{cases}
+\mathrm{K}\text{ or }\rfun{\mathrm{I}_{\ii\nu}}{\sigma}
+& \rbr{\mscrl, \mscrs\mscrv} = \rbr{+,+}, \\
+\mathrm{J}\text{ or }\rfun{\mathrm{Y}_{\ii\nu}}{\sigma}
+& \rbr{\mscrl, \mscrs\mscrv} = \rbr{+,-}, \\
+\mathrm{J}\text{ or }\rfun{\mathrm{Y}_{\nu}}{\sigma}
+& \rbr{\mscrl, \mscrs\mscrv} = \rbr{-,+}, \\
+\mathrm{K}\text{ or }\rfun{\mathrm{I}_{\nu}}{\sigma}
+& \rbr{\mscrl, \mscrs\mscrv} = \rbr{-,-}. \\
+\end{cases}
+\end{align}
+\end{itemize}
+
+\begin{itemize}
+\item
+In order to integrate the trsfed.\ first Friedmann equation under the
+implicitising gauge
+\begin{align}
+\mscrs\frac{p_\beta^2}{12}\rbr{
+-\mscrl\frac{\varkappa^{1/2}}{6}\rbr{\frde{\chi}{\beta}}^2
++\varkappa^{-1/2}}
+-\varkappa^{3/2}V\ee^{g\mscrs_\chi\chi} = 0,
+\end{align}
+one can substitute
+\begin{align}
+\widetilde{\sigma}^2 = \frac{p_\beta^2}{12\varkappa^2 \vbr{V}}
+\ee^{-g\mscrs_\chi\chi},
+\qquad
+\gamma = \sqrt{\frac{3}{2\varkappa}}g\beta
+\end{align}
+to get
+\begin{align}
+\rbr{\frde{\widetilde{\sigma}}{\gamma}}^2
++\mscrl\rbr{\mscrs\mscrv - \widetilde{\sigma}^2} = 0
+\quad\Rightarrow\quad
+\frde{\gamma}{\widetilde{\sigma}} = \pm
+\frac{1}{\sqrt{\mscrl\rbr{\mscrs\mscrv - \widetilde{\sigma}^2}}},
+\end{align}
+which is of the standard inverse hyperbolic/trigonometric form.
+
+\item
+In order to integrate the separated minisuperspace Wheeler--Dewitt equation
+\begin{align}
+\ee^{-\ii k_\beta\mscrs_\beta\beta}\rbr{
+-\mscrl\mscrs\frac{\hslash^2}{2\varkappa^{3/2}}\rfun{\psi''}{\chi}
+-\mscrs\frac{\hslash^2k_\beta^2}{12\varkappa^{1/2}}\rfun{\psi}{\chi}
++\varkappa^{3/2}V\ee^{g\mscrs_\chi\chi}\rfun{\psi}{\chi}
+} = 0,
+\end{align}
+one can transform
+\begin{align}
+\nu &\coloneqq \sqrt{\frac{2\varkappa}{3}}\frac{k_\beta}{g},\quad
+\sigma^2 \coloneqq 
+\sqrt{8\varkappa^3\vbr{V}\ee^{g\mscrs_\chi\chi}}{\hslash^2 g^2},
+\tag{\ref{eq:trsf-quantum-sigma} rev.}
+\end{align}
+to get
+\begin{align}
+\sigma^2\rfun{\psi''}{\sigma}
++\sigma\rfun{\psi'}{\sigma}
++\mscrl\rbr{\nu^2-\mscrs\mscrv\sigma^2}\rfun{\psi}{\sigma} = 0,
+\end{align}
+which is of the standard Bessel form.
 \end{itemize}
 
 \begin{frame}
