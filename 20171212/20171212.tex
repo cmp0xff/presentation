@@ -48,7 +48,7 @@ latexfonts,  %% Verwendet die latex-beamer-Standardschrift
 %nologo,      %% Kein Logo im Seitenhintergrund
 ]{UzK}
 
-\title{Integrable Cosmological Models with Liouville Scalar Fields}
+\title{Integrable Cosmological Models with Liouville Fields}
 
 \author[Andrianov \and Lan \and Novikov \and \underline{Wang}]{
 	Alexander A. Andrianov\inst{1,4} %\thanks{a.andrianov@spbu.ru}
@@ -238,6 +238,8 @@ in which $\mscrv \coloneqq \sgn V$, and
 \begin{itemize}
 	\item is not real
 \end{itemize}
+\item The implicitised integral enables one to compare trajectories with wave 
+functions, see below.
 \end{itemize}
 \end{frame}
 
@@ -301,7 +303,7 @@ equation with $\rbr{\beta,\chi}$
 \end{frame}
 
 \begin{frame}%
-{The mode functions}%
+{Separation of the variables and mode functions}%
 {233}
 \begin{itemize}
 \item
@@ -309,24 +311,23 @@ Inserting the separating Ansatz $\rfun{\Psi}{\beta,\chi} =
 \ee^{-\ii k_\beta\mscrs_\beta\beta}\rfun{\psi}{\chi}$, the remaining
 equation turns out to be Besselian, and the mode functions are
 \begin{align}
-\rfun{\psi_\nu}{\chi} &= 
-C_1\rfun{\mathrm{B}_{\nu}^{(1)}}{\sigma}
-+C_2\rfun{\mathrm{B}_{\nu}^{(2)}}{\sigma},
+\rfun{\Psi_\nu}{\beta, \chi} \coloneqq
+\ee^{-\ii \nu \gamma} \rfun{\psi_\nu}{\chi} \coloneqq
+\ee^{-\ii \nu \gamma} \rbr{C_1\rfun{\mathrm{B}_{\nu}^{(1)}}{\sigma}
++C_2\rfun{\mathrm{B}_{\nu}^{(2)}}{\sigma}},
 \end{align}
 in which
 \begin{align}
-\nu &\coloneqq \sqrt{\frac{2\varkappa}{3}}\frac{k_\beta}{g},\qquad
+\nu \coloneqq \sqrt{\frac{2\varkappa}{3}}\frac{k_\beta}{g},\quad
+\gamma \coloneqq \sqrt{\frac{3}{2\varkappa}}g\beta,\quad
 \sigma^2 \coloneqq 
-\frac{8\varkappa^3\vbr{V}\ee^{g\mscrs_\chi\chi}}{\hslash^2 g^2},
+\frac{8\varkappa^3\vbr{V}\ee^{g\mscrs_\chi\chi}}{\hslash^2 g^2},\\
 \label{eq:trsf-quantum-sigma}
-\end{align}
-and
-\begin{align}
 \rfun{\mathrm{B}^{(i)}_{\nu}}{\sigma} \coloneqq
 \begin{cases}
 \mathrm{K}\text{ or }\rfun{\mathrm{I}_{\ii\nu}}{\sigma}
 & \rbr{\mscrl, \mscrs\mscrv} = \rbr{+,+}, \\
-\mathrm{J}\text{ or }\rfun{\mathrm{Y}_{\ii\nu}}{\sigma}
+\mathrm{F}\text{ or }\rfun{\mathrm{G}_{\ii\nu}}{\sigma}
 & \rbr{\mscrl, \mscrs\mscrv} = \rbr{+,-}, \\
 \mathrm{J}\text{ or }\rfun{\mathrm{Y}_{\nu}}{\sigma}
 & \rbr{\mscrl, \mscrs\mscrv} = \rbr{-,+}, \\
@@ -334,20 +335,89 @@ and
 & \rbr{\mscrl, \mscrs\mscrv} = \rbr{-,-}. \\
 \end{cases}
 \end{align}
+\item The $\rfun{\mathrm{F}_{\ii\nu}}{\sigma}$ and
+$\rfun{\mathrm{G}_{\ii\nu}}{\sigma}$ are defined in \footfullcite{Dunster1990}.
 \end{itemize}
 \end{frame}
 
+\begin{frame}
+{Physical mode functions}%
+{233}
 \begin{itemize}
-\item
+\item Physical mode functions are expected to be regular on the boundary.
+\item $\rbr{+,+}$: $\vbr{\rfun{\mathrm{I}_{\ii\nu}}{\sigma}} \to +\infty$
+as $\alpha \to +\infty$
+\item $\rbr{-,+}$: $\vbr{\rfun{\mathrm{Y}_{n}}{\sigma}} \to +\infty$
+as $\alpha \to -\infty$, $\forall n \in \BbbZ$.
+\item $\rbr{-,-}$: $\vbr{\rfun{\mathrm{K}_{\nu}}{\sigma}} \to +\infty$
+as $\alpha \to -\infty$; $\vbr{\rfun{\mathrm{I}_{\nu}}{\sigma}} \to +\infty$
+as $\alpha \to +\infty$
+\item These are not to included in the space of physical wave functions.
 \end{itemize}
+
+\end{frame}
+
+
+\begin{frame}%
+{Matching quantum number with classical first integral}%
+{233}
+\begin{itemize}
+\item In order to match the quantum number $k_\beta$ (or \emph{linearly}, 
+$\nu$) with the classical first integral $p_\beta$, one may apply the 
+\emph{principle of constructive interference}.
+
+\item Writing the mode function in the WKB form
+\begin{align}
+\rfun{\Psi_{k_\beta}}{\beta,\chi} \sim \sqrt{\rho}\,\ee^{\ii S/\hslash},
+\qquad S/\hslash \gg 1\text{ and }k_\beta \gg 1,
+\end{align}
+the principle demands that $\partial S/\partial k_\beta = 0$ be equivalent to 
+the classical trajectory.
+
+\end{itemize}
+\end{frame}
+
+\begin{frame}%
+{Matching quantum number with classical first integral}%
+{$\rbr{+,+}$ as exemplar}
+\begin{itemize}
+\item Fixing $\nu/\sigma>1$, the asymptotic expansion
+reads
+\begin{align}
+\rfun{\mathrm{K}_{\ii \nu}}{\sigma} \sim
+\frac{\sqrt{2\pp}\,
+\rfun{\cos}{\sqrt{\nu^2-\sigma^2}-\nu\arccos\frac{\nu}{\sigma}-\frac{\pp}{4}}
+}{
+\rbr{\nu^2-\sigma^2}^{1/4}\ee^{\pp\nu/2}}
++\rfun{\Omicron}{\frac{1}{\sigma}}.
+\end{align}
+
+There are two phases with opposite signs. %$\rfun{\theta_\nu^{\pm}}{\sigma}$.
+Applying the principle to the full mode function $\Psi_\nu$, one has
+$\sigma/\nu = \rfun{\sech}{\mscrs_\beta\gamma}$, which match the trajectory if
+\begin{align}
+\hslash k_\beta \equiv \hslash \sqrt{\frac{3}{2\varkappa}}g\hslash\nu
+= p_\beta,
+\end{align}
+as expected.
+
+\item Fixing $\nu/\sigma<1$, the asymptotic expansion is not oscillatory, but 
+exponential; hence no WKB approximation applies.
+
+\item The conclusions also work for $\rfun{\mathrm{F}_{\ii\nu}}{\sigma}$
+and $\rfun{\mathrm{G}_{\ii\nu}}{\sigma}$ for $\rbr{+,-}$, as well as 
+$\rfun{\mathrm{J}_{\nu}}{\sigma}$ for $\rbr{-,+}$.
+\end{itemize}
+\end{frame}
+
+
 
 \section*{Appendix}
 
 \begin{frame}%
 {Integration of the transformed first Friedmann equation}%
 {$p_\beta \neq 0$}
-In order to integrate the trsfed.\ first Friedmann equation under the
-implicitising gauge
+In order to integrate the equation under the implicitising gauge
 \begin{align}
 \mscrs\frac{p_\beta^2}{12}\rbr{
 -\mscrl\frac{\varkappa^{1/2}}{6}\rbr{\frde{\chi}{\beta}}^2
@@ -356,10 +426,9 @@ implicitising gauge
 \end{align}
 one can substitute
 \begin{align}
-\widetilde{\sigma}^2 = \frac{p_\beta^2}{12\varkappa^2 \vbr{V}}
+\gamma \coloneqq \sqrt{\frac{3}{2\varkappa}}g\beta, \qquad
+\widetilde{\sigma}^2 \coloneqq \frac{p_\beta^2}{12\varkappa^2 \vbr{V}}
 \ee^{-g\mscrs_\chi\chi},
-\qquad
-\gamma = \sqrt{\frac{3}{2\varkappa}}g\beta
 \end{align}
 to get
 \begin{align}
@@ -369,14 +438,14 @@ to get
 \frde{\gamma}{\widetilde{\sigma}} = \pm
 \frac{1}{\sqrt{\mscrl\rbr{\mscrs\mscrv - \widetilde{\sigma}^2}}},
 \end{align}
-which is of the standard inverse hyperbolic/trigonometric form.
+which is of the standard inverse hyperbolic / trigonometric form.
 \end{frame}
 
 
 
 \begin{frame}%
-{Integration of the separated minisuperspace Wheeler--DeWitt equation}%
-{Introduction}
+{Integration of the separated mss.\ Wheeler--DeWitt equation}%
+{233}
 In order to integrate the separated minisuperspace Wheeler--DeWitt equation
 \begin{align}
 \ee^{-\ii k_\beta\mscrs_\beta\beta}\rbr{
@@ -398,7 +467,7 @@ to get
 +\sigma\rfun{\psi'}{\sigma}
 +\mscrl\rbr{\nu^2-\mscrs\mscrv\sigma^2}\rfun{\psi}{\sigma} = 0,
 \end{align}
-which is of the standard Bessel form.
+which is of the standard Besselian form.
 \end{frame}
 
 \begin{itemize}
