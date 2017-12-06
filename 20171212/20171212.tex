@@ -264,6 +264,17 @@ automatically consistent with the trsfed.\ Klein--Gordon equation.
 
 \section{Dirac quantisation and the wave functions}
 
+\begin{frame}%
+{Introduction}%
+{Introduction}
+\begin{itemize}
+	\item
+\end{itemize}
+\end{frame}
+
+\begin{frame}%
+{Dirac quantisation}%
+{233}
 \begin{itemize}
 \item
 The primary Hamiltonian and the Hamiltonian constraint reads
@@ -277,12 +288,26 @@ H_\perp &= -\mscrs\frac{p_\beta^2}{12\varkappa^{1/2}}
 \item
 Applying the Dirac quantisation rules with the Laplace--Beltrami opeator for
 the generalised momenta, one gets the minisuperspace Wheeler--DeWitt
-equation $\widehat{H}_\perp \rfun{\Psi}{\beta,\chi} = 0$.
+equation with $\rbr{\beta,\chi}$
+%$\widehat{H}_\perp \rfun{\Psi}{\beta,\chi} = 0$.
+\begin{align}
+0 &= \widehat{H}_\perp \rfun{\Psi}{\beta,\chi} \coloneqq
+\rbr{\mscrs\frac{\hslash^2}{12\varkappa^{1/2}}\partial_{\beta}^2
+-\mscrl\mscrs\frac{\hslash^2}{2\varkappa^{3/2}}\partial_{\chi}^2
++\varkappa^{3/2}V\ee^{g\mscrs_\chi\chi}}\Psi.
+\end{align}
 
+\end{itemize}
+\end{frame}
+
+\begin{frame}%
+{The mode functions}%
+{233}
+\begin{itemize}
 \item
 Inserting the separating Ansatz $\rfun{\Psi}{\beta,\chi} =
 \ee^{-\ii k_\beta\mscrs_\beta\beta}\rfun{\psi}{\chi}$, the remaining
-equation turns out to be Besselian, and the full solutions are
+equation turns out to be Besselian, and the mode functions are
 \begin{align}
 \rfun{\psi_\nu}{\chi} &= 
 C_1\rfun{\mathrm{B}_{\nu}^{(1)}}{\sigma}
@@ -290,7 +315,7 @@ C_1\rfun{\mathrm{B}_{\nu}^{(1)}}{\sigma}
 \end{align}
 in which
 \begin{align}
-\nu &\coloneqq \sqrt{\frac{2\varkappa}{3}}\frac{k_\beta}{g},\quad
+\nu &\coloneqq \sqrt{\frac{2\varkappa}{3}}\frac{k_\beta}{g},\qquad
 \sigma^2 \coloneqq 
 \frac{8\varkappa^3\vbr{V}\ee^{g\mscrs_\chi\chi}}{\hslash^2 g^2},
 \label{eq:trsf-quantum-sigma}
@@ -310,9 +335,17 @@ and
 \end{cases}
 \end{align}
 \end{itemize}
+\end{frame}
 
 \begin{itemize}
 \item
+\end{itemize}
+
+\section*{Appendix}
+
+\begin{frame}%
+{Integration of the transformed first Friedmann equation}%
+{$p_\beta \neq 0$}
 In order to integrate the trsfed.\ first Friedmann equation under the
 implicitising gauge
 \begin{align}
@@ -337,9 +370,14 @@ to get
 \frac{1}{\sqrt{\mscrl\rbr{\mscrs\mscrv - \widetilde{\sigma}^2}}},
 \end{align}
 which is of the standard inverse hyperbolic/trigonometric form.
+\end{frame}
 
-\item
-In order to integrate the separated minisuperspace Wheeler--Dewitt equation
+
+
+\begin{frame}%
+{Integration of the separated minisuperspace Wheeler--DeWitt equation}%
+{Introduction}
+In order to integrate the separated minisuperspace Wheeler--DeWitt equation
 \begin{align}
 \ee^{-\ii k_\beta\mscrs_\beta\beta}\rbr{
 -\mscrl\mscrs\frac{\hslash^2}{2\varkappa^{3/2}}\rfun{\psi''}{\chi}
@@ -349,7 +387,7 @@ In order to integrate the separated minisuperspace Wheeler--Dewitt equation
 \end{align}
 one can transform
 \begin{align}
-\nu &\coloneqq \sqrt{\frac{2\varkappa}{3}}\frac{k_\beta}{g},\quad
+\nu &\coloneqq \sqrt{\frac{2\varkappa}{3}}\frac{k_\beta}{g},\qquad
 \sigma^2 \coloneqq 
 \frac{8\varkappa^3\vbr{V}\ee^{g\mscrs_\chi\chi}}{\hslash^2 g^2},
 \tag{\ref{eq:trsf-quantum-sigma} rev.}
@@ -361,6 +399,10 @@ to get
 +\mscrl\rbr{\nu^2-\mscrs\mscrv\sigma^2}\rfun{\psi}{\sigma} = 0,
 \end{align}
 which is of the standard Bessel form.
+\end{frame}
+
+\begin{itemize}
+\item
 \end{itemize}
 
 \begin{frame}
