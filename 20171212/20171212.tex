@@ -23,8 +23,10 @@
 \input{./phys-chem.tex}
 
 \usepackage[%style=numeric,
+			isbn = false, doi = false,
 			backend=biber]{biblatex}
 \addbibresource{20171212.bib}
+\AtEveryCitekey{\clearfield{title}\clearfield{issn}}
 
 %% Falls Anzeige der \sections, \subsections etc. gewuenscht, kann zB.
 %% das infolines theme geladen werden. Wichtig ist jedoch, dass andere
@@ -109,23 +111,24 @@ Institut de Ci\`encies del Cosmos (ICCUB), Universitat de Barcelona, Spain}
 \begin{itemize}
 \item Flat Robertson--Walker metric
 $\dd s^2 = -\rfun{N^2}{t}\,\dd t^2
-+\varkappa^{-1/2}\ee^{2\rfun{\alpha}{t}}\,\dd\Omega_3^2$,
++\varkappa^{-1}\ee^{2\rfun{\alpha}{t}}\,\dd\Omega_3^2$,
 where $\varkappa \coloneqq 8\pp\nG$, $\dd\Omega_3^2$ dimensionless spacial 
 metric.
 
 \item Homogeneous real Klein--Gordon field with potential
-(dubbed Liouville) $V\ee^{\lambda\phi}$, $\lambda, V\in \BbbR$,
+$V\ee^{\lambda\phi}$ (Liouville), where $\lambda, V\in \BbbR$,
 and kinetic term with sign $\mscrl = \pm 1$ (quintessence
 / phantom model).
 
-\item Total action $\mscrS = S_{\text{EH}} + S_\text{GHY} + S_\text{L}
-= \int\dd\Omega_3^2\int\dd t\,L$,
+\item Total action $\mscrS \coloneqq S_{\text{EH}} + S_\text{GHY} + S_\text{L}
+= \int\dd\Omega_3^2\int\dd t\,L$, in which the effective Lagrangian reads
 \begin{align}
 %S_{\text{Einstein--Hilbert}} + S_\text{Gibbons--Hawking--York} + 
 %S_\text{Liouville}
 L&\coloneqq \varkappa^{3/2}N\ee^{3\alpha}
 \rbr{-\frac{3}{\varkappa}\frac{\dot{\alpha}^2}{N^2}
 +\mscrl\frac{\dot{\phi}^2}{2N^2}-V\ee^{\lambda\phi}},
+\label{eq:eff-lag-10}
 \end{align}
 in which dot means $\dd/\dd t$ and $\mscrl = \pm 1$.
 \end{itemize}
@@ -133,10 +136,11 @@ in which dot means $\dd/\dd t$ and $\mscrl = \pm 1$.
 
 \begin{frame}%
 {Decoupling the variables}%
-{123}
+{Via \emph{rescaled} special orthogonal transformation}
 \begin{itemize}
-\item Choosing $\overline{N} \coloneqq N\ee^{-3\alpha}$, the effective
-Lagrangian transforms to
+\item Setting $\overline{N} \coloneqq N\ee^{-3\alpha}$, \cref{eq:eff-lag-10}
+%the effective Lagrangian
+transforms to
 \begin{align}
 L = \varkappa^{3/2}\overline{N}
 \rbr{-\frac{3}{\varkappa}\frac{\dot{\alpha}^2}{\overline{N}^2}
@@ -146,7 +150,7 @@ L = \varkappa^{3/2}\overline{N}
 \item Defining $\Delta \coloneqq \lambda^2 - 6\mscrl\varkappa$,
 $\mscrs \coloneqq \sgn \Delta$ and
 $g \coloneqq \mscrs \sqrt{\vbr{\Delta}} \equiv \mscrs\sqrt{\mscrs\Delta}$,
-the \emph{rescaled special orthogonal transformation}
+the \emph{rescaled} special orthogonal transformation
 \begin{align}
 \begin{pmatrix}
 \alpha \\ \phi
@@ -170,7 +174,7 @@ L = \varkappa^{3/2}\overline{N}
 
 \item
 The Euler--Lagrange equations w.r.t.\ $\overline{N}$, $\beta$ and
-$\chi$ will be called the trsfed.\ first, second Friedmann eqs.\ and the
+$\chi$ will be called the trsfed.\ 1st, 2nd Friedmann eqs.\ and the
 Klein--Gordon eq., respectively.
 \end{itemize}
 \end{frame}
@@ -180,7 +184,7 @@ Klein--Gordon eq., respectively.
 {$p_\beta \neq 0$}
 \begin{itemize}
 \item Since $\beta$ is cyclic in \cref{eq:lagrangian-decoupled},
-the second Friedmann equation can be integrated
+the trsfed.\ 2nd Friedmann eq.\ can be integrated\footfullcite{Lan2016}
 \begin{align}
 \text{const.} \equiv p_\beta \coloneqq \frpa{L}{\dot{\beta}} &=
 -6\mscrs\varkappa^{1/2}\frac{\dot{\beta}}{\overline{N}}
@@ -189,9 +193,9 @@ the second Friedmann equation can be integrated
 \frac{\lambda\dot{\alpha}+\mscrl\varkappa\dot{\phi}}{\overline{N}}.
 \end{align}
 
-\item For $p_\beta \neq 0$, fixing the \emph{implicitising gauge}
+\item For $p_\beta \neq 0$, fixing the \alert{implicitising gauge}
 $\overline{N} = -6\mscrs\sqrt{\varkappa}\dot{\beta}/p_\beta$, the trsfed.\
-first Friedmann equation can be integrated
+1st Friedmann equation can be integrated
 \begin{align}
 \ee^{\mscrs_\chi g\chi} &=
 \frac{p_\beta^2}{12\varkappa^2\vbr{V}}
@@ -338,8 +342,8 @@ in which
 & \rbr{\mscrl, \mscrs\mscrv} = \rbr{-,-}. \\
 \end{cases}
 \end{align}
-\item The $\rfun{\mathrm{F}_{\ii\nu}}{\sigma}$ and
-$\rfun{\mathrm{G}_{\ii\nu}}{\sigma}$ are defined in \footfullcite{Dunster1990}.
+\item Adapted to imaginary order, $\rfun{\mathrm{F}_{\nu}}{\sigma}$ and
+$\rfun{\mathrm{G}_{\nu}}{\sigma}$ are defined in \footfullcite{Dunster1990}.
 \end{itemize}
 \end{frame}
 
@@ -350,18 +354,24 @@ $\rfun{\mathrm{G}_{\ii\nu}}{\sigma}$ are defined in \footfullcite{Dunster1990}.
 \item Physical mode functions are expected to be regular on the boundary.
 \item $\rbr{+,+}$: $\vbr{\rfun{\mathrm{I}_{\ii\nu}}{\sigma}} \to +\infty$
 as $\alpha \to +\infty$
-\item $\rbr{-,+}$: $\vbr{\rfun{\mathrm{Y}_{n}}{\sigma}} \to +\infty$
-as $\alpha \to -\infty$, $\forall n \in \BbbZ$.
+\item $\rbr{-,+}$: 
 \begin{itemize}
 \item
-for $\nu \in \BbbR\backslash\BbbZ$, one can choose $\mathrm{J}_{-\nu}$ as
-another base instead of $\mathrm{Y}_{+\nu}$, since $\mathrm{J}_{\pm\nu}$
-are also linearly independent.
+$\forall n \in \BbbZ$, $\vbr{\rfun{\mathrm{Y}_{n}}{\sigma}} \to +\infty$ as 
+$\alpha \to -\infty$.
+\item
+$\forall\nu\in\BbbR\backslash\BbbZ$, choose $\mathrm{J}_{-\nu}$ instead of 
+$\mathrm{Y}_{+\nu}$, since $\mathrm{J}_{\pm\nu}$ are also linearly independent.
+\item
+$\forall\nu\in\BbbR^+\backslash\BbbZ$, $\vbr{\rfun{\mathrm{J}_{-\nu}}{\sigma}} 
+\to +\infty$ as $\alpha \to -\infty$.
 \end{itemize}
 \item $\rbr{-,-}$: $\vbr{\rfun{\mathrm{K}_{\nu}}{\sigma}} \to +\infty$
 as $\alpha \to -\infty$; $\vbr{\rfun{\mathrm{I}_{\nu}}{\sigma}} \to +\infty$
 as $\alpha \to +\infty$
 \item These are not to included in the space of physical wave functions.
+\item For $\rbr{-,+}$, \alert{only $\mathrm{J}_{\nu}$ with 
+$\nu \ge 0$ survives}.
 \end{itemize}
 
 \end{frame}
@@ -421,38 +431,48 @@ $\rfun{\mathrm{J}_{\nu}}{\sigma}$ for $\rbr{-,+}$.
 \end{frame}
 
 \begin{frame}%
-{Introducint norm for the wave functions}%
-{233}
+{Inner product for wave functions}%
+{Schrödinger product}
 \begin{itemize}
-\item To make sense of and construct a wave packet, defining a norm is
-necessary
-\item A common starting point of most approaches is the 
-\alert{Schrödinger norm}
+\item To make sense of amplitude and wave packet, an inner product is necessary
+
+\item A common starting point of most approaches is the \alert{Schrödinger 
+product}
 \begin{align}
 \rbr{\Psi_1,\Psi_2}_\text{S} \coloneqq
-\int \dd \chi\,\rfun{\rho_\text{S}}{\beta,\chi},\qquad
-\rho_\text{S} \coloneqq \Psi_1^* \Psi_2.
+\int \dd \chi\,\rfun{\Psi_1^*}{\beta,\chi} \rfun{\Psi_2}{\beta,\chi};
 \end{align}
-\item Manifestly $\rho_\text{S} \ge 0$. However, there is no continuity
-equation $\dot{\rho}_\text{S} + \nabla\cdot\vec{j}_\text{S} = 0$ for
-$\rho_\text{S}$, because \cref{eq:WDW-10} is KG-like and not heat-like.
 
+\item In terms of a norm, $\rbr{\Psi, \Psi}_\text{S} \equiv \int \dd \chi\,
+\rfun{\rho_\text{S}}{\beta,\chi},$ in which $\rho_\text{S} \coloneqq 
+\Psi^*\Psi$. Manifestly $\rho_\text{S} \ge 0$; one has $\rbr{\Psi, 
+\Psi}_\text{S} > 0$.
+
+\item
+The corresponding Schrödinger current does not satisfy continuity equation
+$\dot{\rho}_\text{S} + \nabla\cdot \vec{j}_\text{S} = 0$, because 
+\cref{eq:WDW-10} is KG-like.
+\item $\mathrm{K}_{\ii\nu}$%
+\footfullcite{Yakubovich2006,Passian2009,Szmytkowski2010}, 
+$\mathrm{F}_{\ii\nu}$ and $\mathrm{G}_{\ii\nu}$ can be normalised, proved to be 
+orthogonal and complete.
 \end{itemize}
 \end{frame}
 
 \begin{frame}%
-{Self-adjointness of operators for the phantom model}%
-{$\rbr{+,-}$}
+{Peculiarity for the phantom model}%
+{Orthonormality and completeness for mode functions; self-adjointness for 
+operators}
 \begin{itemize}
-\item Imposing self-adjointness for $\widehat{p}_\chi = -\ii\hslash
-\partial_\chi$, one finds that $\mathrm{J}_{-\vbr{\nu}}$ leads to
-divergent $\rbr{\mathrm{J}_{-\vbr{\nu}}, \widehat{p}_\chi
-\mathrm{J}_{-\vbr{\nu}}}_\text{S}$, since\footfullcite[eq.\ (10.2.2)]%
-{NIST:DLMF}
-\begin{align}
-\rfun{\mathrm{J}_{\nu}}{z} = \rbr{\frac{z}{2}}^\nu
-\rbr{\frac{1}{\rfun{\mupGamma}{\nu+1}} + \rfun{\Omicron}{z^2}}.
-\end{align}
+% \item Imposing self-adjointness for $\widehat{p}_\chi = -\ii\hslash
+% \partial_\chi$, one finds that $\mathrm{J}_{-\vbr{\nu}}$ leads to
+% divergent $\rbr{\mathrm{J}_{-\vbr{\nu}}, \widehat{p}_\chi
+% \mathrm{J}_{-\vbr{\nu}}}_\text{S}$, since\footfullcite[eq.\ (10.2.2)]%
+% {NIST:DLMF}
+% \begin{align}
+% \rfun{\mathrm{J}_{\nu}}{z} = \rbr{\frac{z}{2}}^\nu
+% \rbr{\frac{1}{\rfun{\mupGamma}{\nu+1}} + \rfun{\Omicron}{z^2}}.
+% \end{align}
 
 \item Imposing self-adjointness for $\widehat{p}_\chi^2$, one finds that
 \end{itemize}
