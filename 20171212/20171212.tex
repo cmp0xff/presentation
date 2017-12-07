@@ -292,11 +292,14 @@ H_\perp &= -\mscrs\frac{p_\beta^2}{12\varkappa^{1/2}}
 +\varkappa^{3/2}V\ee^{g\mscrs_\chi\chi}.
 \end{align}
 \item
-Applying the Dirac quantisation rules with the Laplace--Beltrami opeator for
-the generalised momenta, one gets the minisuperspace Wheeler--DeWitt
-equation with $\rbr{\beta,\chi}$
-%$\widehat{H}_\perp \rfun{\Psi}{\beta,\chi} = 0$.
+Applying the Dirac quantisation rules with the Laplace--Beltrami opeator, one 
+gets the mss.\ Wheeler--DeWitt eq.\ with $\rbr{\beta,\chi}$
+%$\widehat{H}_\perp \rfun{\Psi}{\beta,\chi} = 0$,
 \begin{align}
+% -\mscrs \frac{12\varkappa^{1/2}}{\hslash^2}\widehat{H}_\perp 
+% \Psi \eqqcolon -\partial_\beta^2\Psi - \BbbD\Psi,\qquad
+% \BbbD = -\mscrl \frac{6}{\varkappa}\partial_\chi^2 +
+% \mscrs \frac{12\varkappa^2 V \ee^{g\mscrs_\chi\chi}}{\hslash^2}.
 0 &= \widehat{H}_\perp \rfun{\Psi}{\beta,\chi} \coloneqq
 \rbr{\mscrs\frac{\hslash^2}{12\varkappa^{1/2}}\partial_{\beta}^2
 -\mscrl\mscrs\frac{\hslash^2}{2\varkappa^{3/2}}\partial_{\chi}^2
@@ -304,8 +307,8 @@ equation with $\rbr{\beta,\chi}$
 \label{eq:WDW-10}
 \end{align}
 \item
-\Cref{eq:WDW-10} is a Klein--Gordon-like equation, hyperbolic for
-$\mscrl = +1$ and \alert{elliptic} for $\mscrl = -1$.
+\Cref{eq:WDW-10} is KG-like, hyperbolic for $\mscrl = +1$ and 
+\alert{elliptic} for $\mscrl = -1$.
 \end{itemize}
 \end{frame}
 
@@ -314,9 +317,10 @@ $\mscrl = +1$ and \alert{elliptic} for $\mscrl = -1$.
 {233}
 \begin{itemize}
 \item
-Inserting the separating Ansatz $\rfun{\Psi}{\beta,\chi} =
-\ee^{-\ii k_\beta\mscrs_\beta\beta}\rfun{\psi}{\chi}$, the remaining
-equation turns out to be Besselian, and the mode functions are
+Inserting %the separating Ansatz
+$\rfun{\Psi}{\beta,\chi} = \ee^{-\ii k_\beta\mscrs_\beta\beta} 
+\rfun{\psi}{\chi}$, the remaining
+eq. $\BbbD\psi=\nu^2\psi$ turns out to be Besselian, and the mode functions are
 \begin{align}
 \rfun{\Psi_\nu}{\beta, \chi} \coloneqq
 \ee^{-\ii \nu \gamma} \rfun{\psi_\nu}{\chi} \coloneqq
@@ -453,9 +457,10 @@ The corresponding Schrödinger current does not satisfy continuity equation
 $\dot{\rho}_\text{S} + \nabla\cdot \vec{j}_\text{S} = 0$, because 
 \cref{eq:WDW-10} is KG-like.
 \item $\mathrm{K}_{\ii\nu}$%
-\footfullcite{Yakubovich2006,Passian2009,Szmytkowski2010}, 
-$\mathrm{F}_{\ii\nu}$ and $\mathrm{G}_{\ii\nu}$ can be normalised, proved to be 
-orthogonal and complete.
+\footfullcite{Yakubovich2006,Passian2009,Szmytkowski2010} for $\rbr{+,+}$, 
+$\mathrm{F}_{\ii\nu}$ and $\mathrm{G}_{\ii\nu}$ (not $\mathrm{J}_{\ii\nu}$!) 
+for $+,-$ can be proved to be orthogonal and complete individually, as well 
+as normalised.
 \end{itemize}
 \end{frame}
 
@@ -473,6 +478,15 @@ operators}
 % \rfun{\mathrm{J}_{\nu}}{z} = \rbr{\frac{z}{2}}^\nu
 % \rbr{\frac{1}{\rfun{\mupGamma}{\nu+1}} + \rfun{\Omicron}{z^2}}.
 % \end{align}
+
+\item $\cbr{\rfun{\mathrm{J}_{\nu}}{\sigma}}$'s are not orthogonal
+\begin{align}
+\int_0^{+\infty}\frac{\dd\sigma}{\sigma}
+\rfun{\mathrm{J}_{\nu}}{\sigma}
+\rfun{\mathrm{J}_{\tilde{\nu}}}{\sigma} =
+\frac{2\rfun{\sin}{\pp\rbr{\nu-\tilde{\nu}}/2}}{\pp\rbr{\nu^2-\tilde{\nu}^2}}.
+\end{align}
+
 
 \item Imposing self-adjointness for $\widehat{p}_\chi^2$, one finds that
 \end{itemize}
