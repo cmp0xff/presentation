@@ -114,7 +114,7 @@ where $\varkappa \coloneqq 8\pp\nG$, $\dd\Omega_3^2$ dimensionless spacial
 metric.
 
 \item Homogeneous real Klein--Gordon field with potential
-(dubbed \emph{Liouville}) $V\ee^{\lambda\phi}$, $\lambda, V\in \BbbR$,
+(dubbed Liouville) $V\ee^{\lambda\phi}$, $\lambda, V\in \BbbR$,
 and kinetic term with sign $\mscrl = \pm 1$ (quintessence
 / phantom model).
 
@@ -297,8 +297,11 @@ equation with $\rbr{\beta,\chi}$
 \rbr{\mscrs\frac{\hslash^2}{12\varkappa^{1/2}}\partial_{\beta}^2
 -\mscrl\mscrs\frac{\hslash^2}{2\varkappa^{3/2}}\partial_{\chi}^2
 +\varkappa^{3/2}V\ee^{g\mscrs_\chi\chi}}\Psi.
+\label{eq:WDW-10}
 \end{align}
-
+\item
+\Cref{eq:WDW-10} is a Klein--Gordon-like equation, hyperbolic for
+$\mscrl = +1$ and \alert{elliptic} for $\mscrl = -1$.
 \end{itemize}
 \end{frame}
 
@@ -349,6 +352,12 @@ $\rfun{\mathrm{G}_{\ii\nu}}{\sigma}$ are defined in \footfullcite{Dunster1990}.
 as $\alpha \to +\infty$
 \item $\rbr{-,+}$: $\vbr{\rfun{\mathrm{Y}_{n}}{\sigma}} \to +\infty$
 as $\alpha \to -\infty$, $\forall n \in \BbbZ$.
+\begin{itemize}
+\item
+for $\nu \in \BbbR\backslash\BbbZ$, one can choose $\mathrm{J}_{-\nu}$ as
+another base instead of $\mathrm{Y}_{+\nu}$, since $\mathrm{J}_{\pm\nu}$
+are also linearly independent.
+\end{itemize}
 \item $\rbr{-,-}$: $\vbr{\rfun{\mathrm{K}_{\nu}}{\sigma}} \to +\infty$
 as $\alpha \to -\infty$; $\vbr{\rfun{\mathrm{I}_{\nu}}{\sigma}} \to +\infty$
 as $\alpha \to +\infty$
@@ -362,9 +371,10 @@ as $\alpha \to +\infty$
 {Matching quantum number with classical first integral}%
 {233}
 \begin{itemize}
-\item In order to match the quantum number $k_\beta$ (or \emph{linearly}, 
+\item Baustelle
+\item In order to match the quantum number $k_\beta$ (or \alert{linearly}, 
 $\nu$) with the classical first integral $p_\beta$, one may apply the 
-\emph{principle of constructive interference}.
+\alert{principle of constructive interference}.
 
 \item Writing the mode function in the WKB form
 \begin{align}
@@ -401,12 +411,50 @@ $\sigma/\nu = \rfun{\sech}{\mscrs_\beta\gamma}$, which match the trajectory if
 \end{align}
 as expected.
 
-\item Fixing $\nu/\sigma<1$, the asymptotic expansion is not oscillatory, but 
-exponential; hence no WKB approximation applies.
+\item Fixing $\nu/\sigma<1$, the asymptotic expansion is not oscillatory,
+but exponential; hence no WKB approximation works.
 
-\item The conclusions also work for $\rfun{\mathrm{F}_{\ii\nu}}{\sigma}$
+\item The conclusions also hold for $\rfun{\mathrm{F}_{\ii\nu}}{\sigma}$
 and $\rfun{\mathrm{G}_{\ii\nu}}{\sigma}$ for $\rbr{+,-}$, as well as 
 $\rfun{\mathrm{J}_{\nu}}{\sigma}$ for $\rbr{-,+}$.
+\end{itemize}
+\end{frame}
+
+\begin{frame}%
+{Introducint norm for the wave functions}%
+{233}
+\begin{itemize}
+\item To make sense of and construct a wave packet, defining a norm is
+necessary
+\item A common starting point of most approaches is the 
+\alert{Schrödinger norm}
+\begin{align}
+\rbr{\Psi_1,\Psi_2}_\text{S} \coloneqq
+\int \dd \chi\,\rfun{\rho_\text{S}}{\beta,\chi},\qquad
+\rho_\text{S} \coloneqq \Psi_1^* \Psi_2.
+\end{align}
+\item Manifestly $\rho_\text{S} \ge 0$. However, there is no continuity
+equation $\dot{\rho}_\text{S} + \nabla\cdot\vec{j}_\text{S} = 0$ for
+$\rho_\text{S}$, because \cref{eq:WDW-10} is KG-like and not heat-like.
+
+\end{itemize}
+\end{frame}
+
+\begin{frame}%
+{Self-adjointness of operators for the phantom model}%
+{$\rbr{+,-}$}
+\begin{itemize}
+\item Imposing self-adjointness for $\widehat{p}_\chi = -\ii\hslash
+\partial_\chi$, one finds that $\mathrm{J}_{-\vbr{\nu}}$ leads to
+divergent $\rbr{\mathrm{J}_{-\vbr{\nu}}, \widehat{p}_\chi
+\mathrm{J}_{-\vbr{\nu}}}_\text{S}$, since\footfullcite[eq.\ (10.2.2)]%
+{NIST:DLMF}
+\begin{align}
+\rfun{\mathrm{J}_{\nu}}{z} = \rbr{\frac{z}{2}}^\nu
+\rbr{\frac{1}{\rfun{\mupGamma}{\nu+1}} + \rfun{\Omicron}{z^2}}.
+\end{align}
+
+\item Imposing self-adjointness for $\widehat{p}_\chi^2$, one finds that
 \end{itemize}
 \end{frame}
 
@@ -436,9 +484,10 @@ to get
 +\mscrl\rbr{\mscrs\mscrv - \widetilde{\sigma}^2} = 0
 \quad\Rightarrow\quad
 \frde{\gamma}{\widetilde{\sigma}} = \pm
-\frac{1}{\sqrt{\mscrl\rbr{\mscrs\mscrv - \widetilde{\sigma}^2}}},
+\frac{1}{\sqrt{\mscrl\rbr{- \mscrs\mscrv + \widetilde{\sigma}^2}}},
 \end{align}
-which is of the standard inverse hyperbolic / trigonometric form.
+which is of the standard inverse hyperbolic / trigonometric form for
+$\rbr{+,+}$, $\rbr{+,-}$ and $\rbr{-,+}$.
 \end{frame}
 
 
