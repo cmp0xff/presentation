@@ -1,0 +1,38 @@
+\usepackage{fontspec}
+
+% Multilingual support
+\usepackage{polyglossia}
+
+% more symbols
+\usepackage{textcomp}
+
+% fontspec, realscripts, metalogo fot XeLaTeX
+\usepackage{xltxtra}
+	% Unicode fonts
+	\setmainfont{CMU Serif}
+	\setsansfont{CMU Sans Serif}
+	\setmonofont{CMU Typewriter Text}
+\usepackage{amsfonts}
+\usepackage{unicode-math}
+	\setmathfont{Latin Modern Math} % default
+	\setmathfont{Latin Modern Math}[range={
+		"1D608-"1D63B},	% Italic sans serif, Latin, uppercase
+		sans-style=italic]
+	\setmathfont{Latin Modern Math}[range={
+		"1D6E2-"1D6FA,	% Italic Greek, uppercase
+		"1D6FC-"1D71B},	% Italic Greek, lowercase
+		math-style=ISO]
+	\setmathfont{Latin Modern Math}[range={
+		"00391-"003A9,	% Upright Greek, uppercase
+		"003B1-"003F5,	% Upright Greek, lowercase
+		"1D6A8-"1D6E1},	% Bold Greek
+		sans-style=upright]
+	\setmathfont{Asana Math}[range={
+		\mathbin}] %\mathord
+	\setmathfont{STIX Math}[range={
+		"02609}] % ☉
+	\setmathfont{XITS Math}[range={
+		"1D4B6-"1D4CF}] % Script, Latin, lowercase
+	%\setmathfont{⟨font name⟩}[range=⟨unicode range⟩,⟨font features⟩]
+
+\usepackage{xeCJK}

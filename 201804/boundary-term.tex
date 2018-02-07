@@ -1,0 +1,1090 @@
+﻿%% UzK - A BEAMER THEME FOR THE UNIVERSITY OF COLOGNE
+%% http://solstice.github.com/uzk-theme/
+
+\documentclass[9pt]{beamer}
+
+\input{../preambles/unicode.tex}
+\setmainlanguage{english}
+\setotherlanguage{ngerman}
+
+\usefonttheme{professionalfonts}
+%  don't change fonts inside beamer
+
+% AMS--related
+\usepackage{amsmath,amssymb}
+
+% ':=' as \coloneqq
+\usepackage{mathtools}
+\usepackage{siunitx}
+\usepackage{cleveref}
+
+\input{../preambles/math-single.tex}
+\input{../preambles/math-brac.tex}
+\input{../preambles/phys-chem.tex}
+
+\usepackage[%style=numeric,
+			firstinits=true,
+			isbn = false, doi = false,
+			backend=biber]{biblatex}
+%\addbibresource{./boundary-term.bib}
+\AtEveryCitekey{
+		\clearfield{issn}
+		\clearfield{month}\clearfield{url}
+	\ifentrytype{book}{
+		\clearfield{publisher}
+ 	}{
+		\clearfield{title}
+	}
+}
+
+%% Falls Anzeige der \sections, \subsections etc. gewuenscht, kann zB.
+%% das infolines theme geladen werden. Wichtig ist jedoch, dass andere
+%% Themes _vor_ dem UzK-Theme geladen werden.
+%\useoutertheme{infolines}
+
+%% Falls keine der Optionen zur Bestimmung der Fusszeile uebergeben werden    %%
+%% werden alle Fakultaetsfarben verwendet. ---------------------------------- %%
+\usetheme[%
+%wiso,        %% Wiso-Fakultaet
+%jura,        %% Rechtswissenschaftliche Fakultaet
+%medizin,     %% Medizinische Fakultaet
+%philo,       %% Philosophische Fakultaet
+%matnat,      %% Mathematisch-Naturwissenschaftliche Fakultaet
+%human,       %% Humanwissenschaftliche Fakultaet
+%verw,        %% Universitaetsverwaltung
+%nav,         %% Schaltet die Navigationssymbole ein
+latexfonts,  %% Verwendet die latex-beamer-Standardschrift
+%colorful,    %% Farbige Balken im infolines-Theme
+%squares,     %% Aufzaehlungspunkte rechteckig
+%nologo,      %% Kein Logo im Seitenhintergrund
+]{UzK}
+
+\title{Boundary Actions in Geometrodynamics}
+%\subtitle{Integrability, Self-adjointness and Semi-classical Wave Packets}
+
+%\date{March 23, 2018}
+\date{April, 2018}
+
+\author[%Andrianov \and Lan \and Novikov \and \underline{Wang}
+Wang]{
+	%Alexander A. Andrianov\inst{1,4} %\thanks{a.andrianov@spbu.ru}
+	%\and
+	%Chen Lan\inst{2} %\thanks{stlanchen@yandex.ru}
+	%\and
+	%Oleg O. Novikov\inst{1} %\thanks{o.novikov@spbu.ru}
+	%\and 
+	%\underline{Yi-Fan Wang}\inst{3}} %\thanks{yfwang@thp.uni-koeln.de}
+	Yi-Fan Wang\inst{3}}
+
+\institute[%SPBU \and ELI-ALPS \and UzK \and UB
+UzK]{
+%\inst{1} Saint-Petersburg State University,
+%Ulyanovskaya str. 1, Petrodvorets, Sankt-Petersburg 198504, Russland
+%\and
+%\inst{2}
+%ELI-ALPS Research Institute,
+%Budapesti út 5, H-67228 Szeged, Ungarn
+%\and
+\inst{3}
+Institut für Theoretische Physik, Universität zu Köln,
+Zülpicher Straße 77, D-50937 Köln, Deutschland
+%\and
+%\inst{4}
+%Institut de Ciències del Cosmos, Universitat de Barcelona, Martí i Franquès 1, 
+%E-08028 Barcelona, Spanien
+}
+
+\AtBeginSection[]
+{
+ \begin{frame}<beamer>
+ \frametitle{Outline}
+ \tableofcontents[currentsection]
+ \end{frame}
+}
+
+\begin{document}
+
+\begin{frame}%[titlepage]
+  \titlepage
+\end{frame}
+
+\begin{frame}{Outline}
+  \tableofcontents
+  % You might wish to add the option [pausesections]
+\end{frame}
+
+
+\section{Introduction}
+
+\begin{frame}%
+{Introduction}%
+{Quintessence and phantom Liouville field}
+\begin{itemize}
+\item Observed accelerated expansion can be explained by a cosmological 
+constant%\footfullcite{COPELAND2006,Bamba2012} as stationary Dark Energy, but 
+its 
+origin has yet to be understood.
+
+\item Dynamical Dark Energy has been modeled by
+quintessence%\footfullcite{Caldwell1998} and phantom\footfullcite{Caldwell2002} 
+matter, with barotropic index\footnote{Barotropic index is the $w$ in equation
+of state $\rho = wp$.} $w > -1$ and $w < -1$, respectively.
+
+\item They can be realised by minimally-coupled real scalar fields with $\mscrl 
+= \pm 1$\footnote{The signature of metric is mostly positive.}
+\begin{align}
+\mscrS = \int\dd^4 x\,\sqrt{-g}\,\cbr{-\mscrl \frac{g^{\mu\nu}}{2}
+\rbr{\partial_\mu\phi}\rbr{\partial_\nu\phi} - \rfun{\mscrV}{\phi}}.
+\end{align}
+
+\item $\rfun{\mscrV}{\phi} = V\ee^{\lambda\phi}$, $\lambda, V\in \BbbR$ is of
+interest: Liouville field%\footfullcite{NAKAYAMA2004}.
+\end{itemize}
+\end{frame}
+
+\begin{frame}%
+{Introduction}%
+{Friedmann--Lemaître model}
+\begin{itemize}
+\item Assume flat Robertson--Walker metric for a homog.\ and isotr.\ model
+\begin{align}
+g_{\mu\nu}\,\dd x^\mu\,\dd x^\nu = -\rfun{N^2}{t}\,\dd t^2 + \varkappa 
+\ee^{2\rfun{\alpha}{t}}\,\dd\Omega_{3\text{F}}^2
+\end{align}
+w/ $\varkappa \coloneqq 8\pp\nG$, $\dd\Omega_{3\text{F}}^2 \coloneqq 
+\dd\chi^2+\chi^2\rbr{\dd\theta^2+\sin^2\theta\,\dd\varphi^2}$, $N$
+lapse function.
+
+\item Combined with the Liouville field, the total action reads
+$\mscrS \coloneqq \mscrS_{\text{EH}} + \mscrS_\text{GHY} + \mscrS_\text{L}
+= \int\dd\Omega_{3\text{F}}^2\int\dd t\,L$, where
+%in which the effective Lagrangian reads
+\begin{align}
+%S_{\text{Einstein--Hilbert}} + S_\text{Gibbons--Hawking--York} + 
+%S_\text{Liouville}
+L&\coloneqq \varkappa^{3/2}N\ee^{3\alpha}
+\rbr{-\frac{3}{\varkappa}\frac{\dot{\alpha}^2}{N^2}
++\mscrl\frac{\dot{\phi}^2}{2N^2}-V\ee^{\lambda\phi}},
+\label{eq:eff-lag-10}
+\end{align}
+in which dot means $\dd/\dd t$.
+
+\item The model turns out to be integrable, both classically and 
+quantum-mechanically, enabling one to study its full physical properties, e.g.\
+the relation between its classical and quantum theory.
+\end{itemize}
+\end{frame}
+
+\section{Classical model and the implicit trajectories}
+
+\subsection{Lagrangian formalism}
+
+\begin{frame}%
+{Decoupling the variables}%
+{Via \emph{rescaled} special orthogonal transformation}
+\begin{itemize}
+\item Setting $\overline{N} \coloneqq N\ee^{-3\alpha}$, \cref{eq:eff-lag-10}
+%the effective Lagrangian
+transforms to
+\begin{align}
+L = \varkappa^{3/2}\overline{N}
+\rbr{-\frac{3}{\varkappa}\frac{\dot{\alpha}^2}{\overline{N}^2}
++\mscrl\frac{\dot{\phi}^2}{2\overline{N}^2} - V\ee^{\lambda\phi+6\alpha}}
+\end{align}
+
+\item Defining $\Delta \coloneqq \lambda^2 - 6\mscrl\varkappa$,
+$\mscrs \coloneqq \sgn \Delta$ and
+$g \coloneqq \mscrs \sqrt{\vbr{\Delta}} \equiv \mscrs\sqrt{\mscrs\Delta}$,
+the \emph{rescaled} special orthogonal transformation
+\begin{align}
+\begin{pmatrix}
+\alpha \\ \phi
+\end{pmatrix} = \frac{\mscrs}{g}
+\begin{pmatrix}
+\lambda & -\mscrl\varkappa \\
+-6 & \lambda
+\end{pmatrix}
+\begin{pmatrix}
+\mscrs_\beta \beta \\ \mscrs_\chi \chi
+\end{pmatrix}\qquad\text{where } \mscrs_\beta, \mscrs_\chi = \pm 1
+\end{align}
+gives the decoupled Lagrangian
+\begin{align}
+L = \varkappa^{3/2}\overline{N}
+\rbr{-\mscrs\frac{3}{\varkappa}\frac{\dot{\beta}^2}{\overline{N}^2}
++\mscrl\mscrs\frac{\dot{\chi}^2}{2\overline{N}^2}
+-V\ee^{\mscrs_\chi g\chi}}.
+\label{eq:lagrangian-decoupled}
+\end{align}
+
+\item
+The Euler--Lagrange equations w.r.t.\ $\overline{N}$, $\beta$ and
+$\chi$ will be called the trsfed.\ 1st, 2nd Friedmann eqs.\ and the
+Klein--Gordon eq., respectively.
+\end{itemize}
+\end{frame}
+
+\begin{frame}%
+{Implicit integration}%
+{General integral for $p_\beta \neq 0$}
+\begin{itemize}
+\item Since $\beta$ is cyclic in \cref{eq:lagrangian-decoupled},
+the trsfed.\ 2nd Friedmann eq.\ can be integrated%
+
+\item For $p_\beta \neq 0$, fixing the \emph{implicit gauge}
+$\overline{N} = -6\mscrs\sqrt{\varkappa}\dot{\beta}/p_\beta$, the trsfed.\
+1st Friedmann equation \alert{can be integrated to get the trajectory}
+
+in which $\mscrv \coloneqq \sgn V$, $\rbr{\mathrm{sgn},\mathrm{sgn}}$ means 
+$\rbr{\mscrl,\mscrs\mscrv}$, and
+
+\end{itemize}
+\end{frame}
+
+\begin{frame}%
+{Implicit integration}%
+{Specific integral for $p_\beta = 0$}
+\begin{itemize}
+\item For $p_\beta = 0$, integrating the transformed second Friedmann 
+equation yields $\beta \equiv \beta_0$ or $\phi-\phi_0 =
+-\mscrl\lambda\alpha/\varkappa$, which is the well-known power-law special
+solution%\footfullcite[For instance,][ch.\ 3]{Liddle2000}.
+
+\item Further integrating the transformed first Friedmann equation demands 
+$\rbr{+,-}$ or $\rbr{-,+}$ to guarantee $\overline{N} > 0$.
+
+\end{itemize}
+\end{frame}
+
+
+
+
+\begin{frame}%
+{Trajectories for quintessence model $\rbr{+,+}$}%
+{$\sech$, with $\beta_0 = 0$, $\vbr{V} = \varkappa^{-2}$ and
+$p_\beta^2 = \varkappa^2\sqrt{\vbr{V}}$; varying $\lambda$}
+%\includegraphics[width=\textwidth]{../plots.nb/sech_lamb.pdf}
+\begin{itemize}
+	\item has two asymptotes $\chi \propto \pm \beta$
+\end{itemize}
+\end{frame}
+
+\begin{frame}%
+{Trajectories for quintessence model $\rbr{+,+}$}%
+{$\sech$, with $\beta_0 = 0$, $\vbr{V} = \varkappa^{-2}$ and
+$\lambda^2 = 3\varkappa$; varying $p_\beta$}
+%\includegraphics[width=\textwidth]{../plots.nb/sech_pbet.pdf}
+\begin{itemize}
+	\item has two asymptotes $\chi \propto \pm \beta$
+\end{itemize}
+\end{frame}
+
+\begin{frame}%
+{Trajectories for quintessence model $\rbr{+,+}$}%
+{$\sech$, with $\beta_0 = 0$, $\lambda^2 = 3\varkappa$ and
+$p_\beta^2 = \varkappa^2\sqrt{\vbr{V}}$; varying $V$}
+%\includegraphics[width=\textwidth]{../plots.nb/sech_Vsqr.pdf}
+\begin{itemize}
+	\item has two asymptotes $\chi \propto \pm \beta$
+\end{itemize}
+\end{frame}
+
+% \begin{frame}%
+% {Trajectories for quintessence model $\rbr{+,+}$}%
+% {$\sech$, with $\beta_0 = 0$, $\lambda^2 = 3\varkappa$ and
+% $p_\beta^2 = \varkappa^2\sqrt{\vbr{V}}$; varying $\varkappa$}
+% %\includegraphics[width=\textwidth]{../plots.nb/sech_vark.pdf}
+% \begin{itemize}
+% 	\item has two asymptotes $\chi \propto \pm \beta$
+% \end{itemize}
+% \end{frame}
+
+
+\begin{frame}%
+{Trajectories for quintessence model $\rbr{+,-}$}%
+{$\csch$, with $\beta_0 = 0$, $\vbr{V} = \varkappa^{-2}$ and
+$p_\beta^2 = \varkappa^2\sqrt{\vbr{V}}$; varying $\lambda$}
+%\includegraphics[width=\textwidth]{../plots.nb/csch_lamb_l.pdf}
+\begin{itemize}
+	\item contains two distinct solutions, separated by $\beta = 0$
+	\item has three asymptotes $\chi \propto \pm \beta$ and $\beta = 0$
+\end{itemize}
+\end{frame}
+
+\begin{frame}%
+{Trajectories for quintessence model $\rbr{+,-}$: $\csch$}%
+{$\csch$, with $\beta_0 = 0$, $\vbr{V} = \varkappa^{-2}$ and
+$p_\beta^2 = \varkappa^2\sqrt{\vbr{V}}$; varying $\lambda$}
+%\includegraphics[width=\textwidth]{../plots.nb/csch_lamb_r.pdf}
+\begin{itemize}
+	\item contains two distinct solutions, separated by $\beta = 0$
+	\item has three asymptotes $\chi \propto \pm \beta$ and $\beta = 0$
+\end{itemize}
+\end{frame}
+
+\begin{frame}%
+{Trajectories for quintessence model $\rbr{+,-}$: $\csch$}%
+{$\csch$, with $V = \varkappa^{-2}$ and
+$\lambda^2 = \varkappa$; varying $p_\beta$}
+%\includegraphics[width=\textwidth]{../plots.nb/csch_pbet_l.pdf}
+\begin{itemize}
+	\item contains two distinct solutions, separated by $\beta = 0$
+	\item has three asymptotes $\chi \propto \pm \beta$ and $\beta = 0$
+\end{itemize}
+\end{frame}
+
+\begin{frame}%
+{Trajectories for phantom model $\rbr{-,+}$}%
+{$\csc$, with $V = \varkappa^{-2}$ and
+$p_\beta^2 = 3\varkappa^2\sqrt{\vbr{V}}$}
+%\includegraphics[width=\textwidth]{../plots.nb/csc_lamb_l.pdf}
+%\begin{columns}
+%\begin{column}{.55\textwidth}
+\begin{itemize}
+	\item contains infinite distinct solutions
+	\item has infinite parallel asymptotes $\beta \propto \rbr{n+1/2}\pp $
+\end{itemize}
+%\end{column}
+%\begin{column}{.4\textwidth}
+%\begin{itemize}
+%\item is $\beta$-even for $\beta_0 = 0$
+%\end{itemize}
+%\end{column}
+%\end{columns}
+\end{frame}
+
+\begin{frame}%
+{Trajectories for phantom model $\rbr{-,+}$}%
+{$\csc$, with $V = \varkappa^{-2}$ and
+$p_\beta^2 = 3\varkappa^2\sqrt{\vbr{V}}$}
+%\includegraphics[width=\textwidth]{../plots.nb/csc_lamb_r.pdf}
+%\begin{columns}
+%\begin{column}{.55\textwidth}
+\begin{itemize}
+	\item contains infinite distinct solutions
+	\item has infinite parallel asymptotes $\beta \propto \rbr{n+1/2}\pp $
+\end{itemize}
+%\end{column}
+%\begin{column}{.4\textwidth}
+%\begin{itemize}
+%\item is $\beta$-even for $\beta_0 = 0$
+%\end{itemize}
+%\end{column}
+%\end{columns}
+\end{frame}
+
+\begin{frame}%
+{Trajectories for phantom model $\rbr{-,+}$}%
+{$\csc$, with $V = \varkappa^{-2}$ and
+$\lambda^2 = 3\varkappa$; varying $p_\beta$}
+%\includegraphics[width=\textwidth]{../plots.nb/csc_pbet_l.pdf}
+%\begin{columns}
+%\begin{column}{.55\textwidth}
+\begin{itemize}
+	\item contains infinite distinct solutions
+	\item has infinite parallel asymptotes $\beta \propto \rbr{n+1/2}\pp $
+\end{itemize}
+%\end{column}
+%\begin{column}{.4\textwidth}
+%\begin{itemize}
+%\item is $\beta$-even for $\beta_0 = 0$
+%\end{itemize}
+%\end{column}
+%\end{columns}
+\end{frame}
+
+\begin{frame}%
+{Integration}%
+{Further discussions}
+\begin{itemize}
+%\item The integrals are consistent with the trsfed.\ Klein--Gordon equation.
+
+\item The integral for $\rbr{-,-}$ is not real.
+
+\item The trajectories can be parametrised by $\beta$, inspiring recognising
+$\beta$ as a `time variable'.
+
+\item The implicit integration enables one to compare trajectories with wave 
+functions, see below.
+\end{itemize}
+\end{frame}
+
+\section{Quantised model and the wave packets}
+
+\subsection{Canonical formalism and Dirac quantisation}
+
+\begin{frame}%
+{Dirac quantisation and the mode functions}%
+%{233}
+\begin{itemize}
+\item
+The primary Hamiltonian and the Hamiltonian
+constraint%\footfullcite{Gitman1990,Rothe2010} reads
+\begin{align}
+H^\text{p} &= \overline{N}H_\perp + v^{\overline{N}} p_{\overline{N}},
+\\
+H_\perp &\coloneqq -\mscrs\frac{p_\beta^2}{12\varkappa^{1/2}}
++\mscrl\mscrs\frac{p_\chi^2}{2\varkappa^{3/2}}
++\varkappa^{3/2}V\ee^{g\mscrs_\chi\chi}.
+\end{align}
+\item
+Applying the Dirac quantisation rules with Laplace--Beltrami
+operator%\footfullcite[ch.\ 8]{Kiefer2012}, one 
+gets the minisuperspace Wheeler--DeWitt equation with $\rbr{\beta,\chi}$
+%$\widehat{H}_\perp \rfun{\Psi}{\beta,\chi} = 0$,
+\begin{align}
+% -\mscrs \frac{12\varkappa^{1/2}}{\hslash^2}\widehat{H}_\perp 
+% \Psi \eqqcolon -\partial_\beta^2\Psi - \BbbD\Psi,\qquad
+% \BbbD = -\mscrl \frac{6}{\varkappa}\partial_\chi^2 +
+% \mscrs \frac{12\varkappa^2 V \ee^{g\mscrs_\chi\chi}}{\hslash^2}.
+0 &= \widehat{H}_\perp \rfun{\Psi}{\beta,\chi} \coloneqq
+\rbr{\mscrs\frac{\hslash^2}{12\varkappa^{1/2}}\partial_{\beta}^2
+-\mscrl\mscrs\frac{\hslash^2}{2\varkappa^{3/2}}\partial_{\chi}^2
++\varkappa^{3/2}V\ee^{g\mscrs_\chi\chi}}\Psi.
+\label{eq:WDW-10}
+\end{align}
+\item
+\Cref{eq:WDW-10} is KG-like, hyperbolic for $\mscrl = +1$ and 
+\emph{elliptic} for $\mscrl = -1$.
+\end{itemize}
+\end{frame}
+
+\begin{frame}%
+{Separation of the variables and mode functions}%
+%{233}
+\begin{itemize}
+\item
+Writing $\rfun{\Psi}{\beta,\chi} = \rfun{\varphi}{\beta}
+\rfun{\psi}{\chi}$, \cref{eq:WDW-10} can be separated into
+
+\begin{align}
+\partial_\beta^2\rfun{\varphi}{\beta} &= k_\beta^2\rfun{\varphi}{\beta};\\
+\BbbD \rfun{\psi}{\chi} &= k_\beta^2 \rfun{\psi}{\chi},\qquad
+\BbbD \coloneqq
+-\mscrl \frac{6}{\varkappa} \partial_\chi^2
++ \mscrs\mscrv \frac{12\varkappa^2\vbr{V}}{\hslash^2}.
+\label{eq:separated-10}
+\end{align}
+\item \Cref{eq:separated-10}
+turns out to be Besselian, and the mode functions are
+\begin{align}
+\rfun{\Psi_\nu}{\beta, \chi} \coloneqq
+\sum_{i=1}^2 c_i \rfun{\varphi_{\nu}^{(i)}}{\gamma}
+\sum_{j=1}^2 a_j\rfun{\mathrm{B}_{\nu}^{(j)}}{\sigma},\quad
+\nu \ge 0; \\
+\nu \coloneqq \sqrt{\frac{2\varkappa}{3}}\frac{1}{g}\,k_\beta,\quad
+\gamma \coloneqq \sqrt{\frac{3}{2\varkappa}}\frac{g}{1}\,\beta,\qquad
+\sigma^2 \coloneqq 
+\frac{8\varkappa^3\vbr{V}\ee^{g\mscrs_\chi\chi}}{\hslash^2 g^2},
+\label{eq:trsf-quantum-sigma}
+\\
+\begin{aligned}
+\rfun{{}_{\rbr{+,+}}\mathrm{B}^{(i)}_{\nu}}{\sigma} &\coloneqq
+\mathrm{K}\text{ and }\rfun{\mathrm{I}_{\ii\nu}}{\sigma},\quad&
+\rfun{{}_{\rbr{+,-}}\mathrm{B}^{(i)}_{\nu}}{\sigma} &\coloneqq
+\mathrm{F}\text{ and }\rfun{\mathrm{G}_{\ii\nu}}{\sigma},\nonumber \\
+\rfun{{}_{\rbr{-,+}}\mathrm{B}^{(i)}_{\nu}}{\sigma} &\coloneqq
+\mathrm{J}\text{ and }\rfun{\mathrm{Y}_{\nu}}{\sigma},\quad&
+\rfun{{}_{\rbr{-,-}}\mathrm{B}^{(i)}_{\nu}}{\sigma} &\coloneqq
+\mathrm{K}\text{ and }\rfun{\mathrm{I}_{\nu}}{\sigma}.
+\end{aligned}
+\end{align}
+\item Adapted to imaginary order, $\rfun{\mathrm{F}_{\nu}}{\sigma}$ and
+$\rfun{\mathrm{G}_{\nu}}{\sigma}$ are defined in %\footfullcite{Dunster1990}.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+{Physical mode functions}%
+%{233}
+\begin{itemize}
+\item Physical mode functions are expected to be regular on the boundary.
+\item $\rbr{+,+}$: $\vbr{\rfun{\mathrm{I}_{\ii\nu}}{\sigma}} \to +\infty$
+as $\alpha \to +\infty$
+\item $\rbr{-,+}$: 
+\begin{itemize}
+\item
+$\forall n \in \BbbN$, $\vbr{\rfun{\mathrm{Y}_{n}}{\sigma}} \to +\infty$ as 
+$\alpha \to -\infty$.
+\item
+$\forall\nu\in\BbbR^+\backslash\BbbN$, choose $\mathrm{J}_{-\nu}$ instead of 
+$\mathrm{Y}_{\nu}$, since $\mathrm{J}_{\pm\nu}$ are also linearly independent.
+\item
+$\forall\nu\in\BbbR^+\backslash\BbbN$, $\vbr{\rfun{\mathrm{J}_{-\nu}}{\sigma}} 
+\to +\infty$ as $\alpha \to -\infty$.
+\end{itemize}
+\item $\rbr{-,-}$: $\vbr{\rfun{\mathrm{K}_{\nu}}{\sigma}} \to +\infty$
+as $\alpha \to -\infty$; $\vbr{\rfun{\mathrm{I}_{\nu}}{\sigma}} \to +\infty$
+as $\alpha \to +\infty$
+\item These are not to be included in the space of physical wave 
+functions. $\forall \nu \ge 0$,
+\begin{itemize}
+\item $\rbr{+,+}$: $\rfun{\mathrm{K}_{\ii\nu}}{\sigma}$ survives
+\item $\rbr{+,-}$: $\rfun{\mathrm{F}_{\ii\nu}}{\sigma}$ and
+$\rfun{\mathrm{G}_{\ii\nu}}{\sigma}$ survives
+\item $\rbr{-,+}$: $\rfun{\mathrm{J}_{\nu}}{\sigma}$ survives
+\item $\rbr{-,-}$: drops out
+\end{itemize}
+\end{itemize}
+
+\end{frame}
+
+\subsection{Semi-classical approximation}
+
+\begin{frame}%
+{Matching quantum number with classical first integral}%
+{Principle of constructive interference}
+\begin{itemize}
+\item Write the mode function in the WKB form
+\begin{align}
+\rfun{\Psi_{k_\beta}}{\beta,\chi} \sim \sqrt{\rfun{\rho}{\beta,\chi}}\,
+\cfun{\exp}{\frac{\ii}{\hslash}\rfun{S}{\beta,\chi}}.
+\end{align}
+
+\item For $S/\hslash \gg 1$ and $k_\beta \gg 1$\footnote{The common form is
+$\hslash\to 0^+$.}, $\rfun{S}{\beta,\chi}$ becomes the Hamilton principle
+function in the leading-order approximation.
+
+\item A Hamilton principle function is stationary with respect to variation of
+integral constants%\footfullcite{Gerlach1969,Landau_1976}
+\begin{align}
+\frpa{S}{k_\beta} = 0.
+\label{eq:principle-const-interf}
+\end{align}
+
+\item Demanding \cref{eq:principle-const-interf} matching the classical
+trajectory, $k_\beta$ can be related to $p_\beta$.
+\end{itemize}
+\end{frame}
+
+\begin{frame}%
+{Matching quantum number with classical first integral}%
+{$\rbr{+,+}$ as exemplar}
+\begin{itemize}
+\item Fixing $\nu/\sigma>1$, the asymptotic expansion
+reads
+\begin{align}
+\rfun{\mathrm{K}_{\ii \nu}}{\sigma} \sim
+\frac{\sqrt{2\pp}\,
+\rfun{\cos}{\sqrt{\nu^2-\sigma^2}-\nu\arccos\frac{\nu}{\sigma}-\frac{\pp}{4}}
+}{
+\rbr{\nu^2-\sigma^2}^{1/4}\ee^{\pp\nu/2}}
++\rfun{\Omicron}{\frac{1}{\sigma}}.
+\end{align}
+\begin{itemize}
+\item There are two phases with opposite signs.
+%$\rfun{\theta_\nu^{\pm}}{\sigma}$.
+Assuming $c_i$, $a_j$'s are real and applying \emph{the principle} to 
+$\rfun{\Psi_\nu}{\sigma}$, one has$\sigma/\nu = 
+\rfun{\sech}{\mscrs_\beta\gamma}$, which matches the trajectory with
+$\beta_0 = 0$ if
+\begin{align}
+\hslash k_\beta \equiv \hslash \sqrt{\frac{3}{2\varkappa}}g\hslash\nu
+= p_\beta,
+\end{align}
+
+\item Non-vanishing $C$ can be compensated by the phase of $c_i$ and $a_j$'s.
+\end{itemize}
+
+\item Fixing $\nu/\sigma<1$, the asymptotic expansion is not oscillatory,
+but exponential; it is not within the WKB regime.
+\end{itemize}
+
+\begin{itemize}
+\item The conclusions also hold for $\rfun{\mathrm{F}_{\ii\nu}}{\sigma}$, 
+$\rfun{\mathrm{G}_{\ii\nu}}{\sigma}$ for $\rbr{+,-}$, and
+$\rfun{\mathrm{J}_{\nu}}{\sigma}$ for $\rbr{-,+}$.
+\end{itemize}
+\end{frame}
+
+\subsection{Inner product and wave packet}
+
+\begin{frame}%
+{Inner product for wave functions}%
+{Schrödinger product}
+\begin{itemize}
+\item To make sense of amplitude and wave packet, an inner product is necessary
+
+\item In terms of a Klein--Gordon equation, call $\beta$ the ``temporal'' 
+variable, and $\chi$ the ``spacial'' variable.
+
+\item A common starting point is the
+\emph{Schrödinger product}%\footfullcite[ch.\ 5]{Kiefer2012}
+\begin{align}
+\rbr{\Psi_1,\Psi_2}_\text{S} \coloneqq
+\int \dd \chi\,\rfun{\Psi_1^*}{\beta,\chi} \rfun{\Psi_2}{\beta,\chi};
+\end{align}
+\item $\rbr{\Psi, \Psi}_\text{S}$ is \textcolor{blue}{positive-definite},
+and the integrand $\rfun{\rho_\text{S}}{\beta,\chi}$ is
+\textcolor{blue}{non-negative}
+
+%\item In terms of a norm, $\rbr{\Psi, \Psi}_\text{S} \equiv \int \dd \chi\,
+%\rfun{\rho_\text{S}}{\beta,\chi},$ in which $\rho_\text{S} \coloneqq 
+%\Psi^*\Psi$. Manifestly $\rho_\text{S} \textcolor{blue}{\ge 0}$, and
+%$\rbr{\Psi, \Psi}_\text{S}$.
+
+\item The corresponding Schrödinger current is \textcolor{blue}{real} but
+\textcolor{orange}{does not satisfy continuity equation}
+$\dot{\rho}_\text{S} + \nabla\cdot \vec{j}_\text{S} = 0$, because 
+\cref{eq:WDW-10} is KG-like.
+\item $\mathrm{K}_{\ii\nu}$%
+%\footfullcite{Yakubovich2006,Passian2009,Szmytkowski2010} for $\rbr{+,+}$, 
+$\mathrm{F}_{\ii\nu}$ and $\mathrm{G}_{\ii\nu}$ for $\rbr{+,-}$ can be proved 
+to be \textcolor{blue}{orthogonal} and \textcolor{blue}{complete}
+among themselves, as well as \textcolor{blue}{can be normalised}.
+\begin{itemize}
+\item $\mathrm{J}_{\ii\nu}$'s for $\rbr{+,-}$ are
+\textcolor{orange}{not orthogonal}
+\end{itemize}
+
+\end{itemize}
+\end{frame}
+
+\begin{frame}%
+{Peculiarity of the phantom model $\rbr{-,+}$}%
+{Orthogonality for mode functions; Hermiticity for operators}
+\begin{itemize}
+
+\item $\rfun{\mathrm{J}_{\nu}}{\sigma}$'s are
+\textcolor{orange}{not orthogonal} under the Schrödinger product
+\begin{align}
+\rbr{\mathrm{J}_{\nu},\mathrm{J}_{\tilde{\nu}}}_\text{S}
+\propto \int_{-\infty}^{+\infty} \dd x\,
+\rfun{\mathrm{J}_{\nu}^*}{\ee^x}
+\rfun{\mathrm{J}_{\tilde{\nu}}}{\ee^x} =
+\frac{2\rfun{\sin}{\pp\rbr{\nu-\tilde{\nu}}/2}}{\pp\rbr{\nu^2-\tilde{\nu}^2}},
+\end{align}
+therefore $\BbbD$ in \cref{eq:separated-10} is
+\textcolor{orange}{not Hermitian} (though we do not need it so far)
+
+\item $\widehat{p}_\chi^2$ is \textcolor{orange}{not Hermitian} for
+$\cbr{\rfun{\mathrm{J}_{\nu}}{\sigma}}$ under the Schrödinger product
+\begin{align}
+\int_{-\infty}^{+\infty} \dd x\,
+\mathrm{J}_{\nu}^*\rbr{-\partial_x^2\mathrm{J}_{\tilde{\nu}}}
+-\int_{-\infty}^{+\infty} \dd x\,
+\rbr{-\partial_x^2\mathrm{J}_{\nu}}^*\mathrm{J}_{\tilde{\nu}}
+= \frac{2}{\pp}\sin\frac{\pp\rbr{\nu-\tilde{\nu}}}{2}.
+\end{align}
+
+\item In order to save Hermiticity for $p_\chi^2$ and $\BbbD$ and 
+orthogonality of the modes under Schrödinger product, one can restrict
+\begin{align}
+\nu = 2n+\nu_0,\qquad \alert{n\in\BbbN},\quad\nu_0\in \left[0,2\right).
+\end{align}
+
+\item Using classical singularities as boundary condition, one can fix
+$\nu_0 = 1$.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}%
+{Discretisation of the phantom model $\rbr{-,+}$}%
+%{233}
+Levels of the phantom model are \alert{discretised} if one imposes Hermiticity 
+of squared momenta under the Schrödinger product.
+
+\begin{itemize}
+\item This kind of subtlety on Hermiticity is named as \emph{self-adjoint 
+extension}, which arises already for infinite square 
+well%\footfullcite{Bonneau2001}.
+\item It also applies to $x^{-2}$ potentials%
+%\footfullcite{Essin2006,Araujo2004}, which is of cosmological relevance%
+%\footfullcite{Bouhmadi-Lopez2009}.
+\end{itemize}
+
+\end{frame}
+
+
+\begin{frame}%
+{Further inner products for wave functions}%
+{Klein--Gordon and Mostafazadeh product}
+\begin{itemize}
+\item Since \cref{eq:WDW-10} is KG-like, another popular choice is the KG 
+product
+\begin{align}
+\rbr{\Psi_1,\Psi_2}_\text{KG}^g \coloneqq \ii g \cbr{
+\rbr{\Psi_1,\partial_\beta\Psi_2}_\text{S} -
+\rbr{\partial_\beta\Psi_1,\Psi_2}_\text{S}},\qquad g > 0.
+\end{align}
+\begin{itemize}
+\item $\rbr{\Psi,\Psi}_\text{KG}^g$ is \textcolor{blue}{real} but
+\textcolor{orange}{not positive-definite}, so does the integrand
+$\rho_\text{KG}$;
+%is \textcolor{blue}{real} but may go \textcolor{orange}{negative},
+\item The corresponding $\vec{J}_\text{KG}$ is
+\textcolor{blue}{conserved} $\dot{\rho}_\text{KG} +
+\nabla\cdot \vec{J}_\text{KG} = 0$ and \textcolor{blue}{real}.
+\end{itemize}
+
+\item Mostafazadeh%\footfullcite{Mostafazadeh2002} found
+% a class of
+a product \emph{for Hermitian $\BbbD$ with positive spectrum}:
+\begin{align}
+% \rbr{\Psi_1,\Psi_2}_\text{M}^{\kappa,a} &\coloneqq
+% \rbr{\Psi_1,\Psi_2}_\text{M}^{\kappa} +
+% \kappa \rbr{\Psi_1,\Psi_2}_\text{KG}^a,\\
+\rbr{\Psi_1,\Psi_2}_\text{M}^{\kappa} &\coloneqq\kappa\cbr{
+\rbr{\Psi_1,\BbbD^{+1/2}\Psi_2}_\text{S}
++\rbr{\partial_\beta\Psi_1,
+\BbbD^{-1/2}\partial_\beta\Psi_2}_\text{S}}, \qquad \kappa > 0.
+\end{align}
+% and $-1 < a < 1$.
+\begin{itemize}
+
+\item $\rbr{\Psi,\Psi}_\text{M}^{\kappa}$ is
+\textcolor{blue}{positive-definite}, but the integrand $\rho_\text{M}^\kappa$
+is \textcolor{orange}{complex}
+\item The corresponding $\vec{J}_\text{M}^\kappa$ is
+\textcolor{blue}{conserved} $\dot{\rho}_\text{M}^\kappa + 
+\nabla\cdot \vec{J}_\text{M}^\kappa = 0$ but also \textcolor{orange}{complex}.
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}%
+{Mostafazadeh inner product and the corresponding density}%
+%{233}
+\begin{itemize}
+\item Real power of $\BbbD$ is defined by spectral decomposition
+$\BbbD^{\gamma} \coloneqq \sum_\nu \nu^{2\gamma}\mbfP_\nu$,
+$\mbfP_\nu\Psi \coloneqq \Psi_\nu\rbr{\Psi_\nu,\Psi}_\text{S}$.
+\end{itemize}
+\begin{itemize}
+\item It can be shown%\footfullcite{Mostafazadeh2006} that \emph{the density}
+\begin{align}
+\varrho_\text{M}^\kappa \coloneqq\kappa\cbr{
+\vbr{\BbbD^{+1/4}\Psi}^2+\vbr{\BbbD^{-1/4}\partial_\beta{\Psi}}^2}
+\end{align}
+\begin{itemize}
+\item is \textcolor{blue}{equivalent to $\rho_\text{M}^\kappa$} up to a
+boundary term
+\begin{align}
+\int\dd\chi\,\varrho_\text{M}^\kappa = 
+\int\dd\chi\,\rho_\text{M}^\kappa \equiv
+\rbr{\Psi_1,\Psi_2}_\text{M}^{\kappa};
+\end{align}
+\item is \textcolor{blue}{non-negative}.
+%\item may be understood as a probability density;
+\item The corresponding current $\vec{\mscrJ}_\text{M}^\kappa$
+is \textcolor{blue}{real} but
+\textcolor{orange}{not conserved}%\footfullcite{Rosenstein1985}.
+\end{itemize}
+
+\end{itemize}
+\end{frame}
+
+\begin{frame}%
+{Wave packets of Gaussian amplitude for continuous spectrum}%
+{Quintessence models}
+\begin{itemize}
+\item It is difficult to find an amplitude such that the wave packet is
+Gaussian
+\item Instead, one can choose a Gaussian amplitude
+\begin{align}
+\rfun{A}{\nu; \overline{\nu},\sigma} \coloneqq
+\rbr{\frac{1}{\sqrt{2\pp}\,\sigma}\rfun{\exp}{
+-\frac{\rbr{\nu-\overline{\nu}}^2}{2\sigma^2}}}^{1/2}
+\end{align}
+
+\item In %\footfullcite{Dabrowski2006},
+$\rfun{A}{\nu;\overline{\nu},\sigma/\sqrt{2}}$ was chosen.
+
+\end{itemize}
+\end{frame}
+
+\begin{frame}%
+{Wave packets of Gaussian amplitude for quintessence model $\rbr{+,+}$}%
+{$\mathrm{K}_{\ii\nu}$, with $\lambda = \varkappa^{1/2}/2$,
+$V = -\varkappa^{-2}$, $\overline{k}_\beta = -2$ and $\sigma_\beta = 5/4$}
+\begin{columns}
+\begin{column}{.49\textwidth}
+\begin{block}{Schrödinger}
+
+\end{block}
+\end{column}
+\begin{column}{.49\textwidth}
+\begin{block}{Mostafazadeh}
+%\only<1>{
+%\includegraphics[width=\textwidth]{../plots.paper.nb/mosta_cosh_2d.pdf}}
+%\only<2>{
+%\includegraphics[width=\textwidth]{../plots.paper.nb/mosta_cosh_3d.pdf}}
+\end{block}
+\end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}%
+{Wave packets of Gaussian amplitude for quintessence model $\rbr{+,-}$}%
+{$\mathrm{F}_{\ii\nu}$, with $\lambda = 4\varkappa^{1/2}/5$,
+$V = +\varkappa^{-2}$, $\overline{k}_\beta = -7/2$ and $\sigma_\beta = 7/5$}
+\begin{columns}
+\begin{column}{.49\textwidth}
+\begin{block}{Schrödinger}
+
+\end{block}
+\end{column}
+\begin{column}{.49\textwidth}
+\begin{block}{Mostafazadeh}
+
+\end{block}
+\end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}%
+{Wave packets of Gaussian amplitude for quintessence model $\rbr{+,-}$}%
+{$\mathrm{G}_{\ii\nu}$, with $\lambda = 4\varkappa^{1/2}/5$,
+$V = +\varkappa^{-2}$, $\overline{k}_\beta = -7/2$ and $\sigma_\beta = 7/5$}
+\begin{columns}
+\begin{column}{.49\textwidth}
+\begin{block}{Schrödinger}
+
+\end{block}
+\end{column}
+\begin{column}{.49\textwidth}
+\begin{block}{Mostafazadeh}
+
+\end{block}
+\end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}%
+{Wave packets with Poissonian amplitude for discrete spectrum}%
+{Discrete phantom model $\rbr{-,+}$}
+\begin{itemize}
+\item Gaussian distribution works for continuous variable
+
+\item For discrete spectrum, one can choose a Poissonian amplitude
+\begin{align}
+\rfun{A_n}{\overline{n}} \coloneqq
+\rbr{\ee^{-\overline{n}}\frac{\overline{n}^n}{n!}}^{1/2}
+\end{align}
+\item In %\footfullcite{Kiefer1990},
+$\rfun{A_n}{\overline{n}/\sqrt{2}}$ was chosen.
+
+\end{itemize}
+\end{frame}
+
+\begin{frame}%
+{Wave packets of Poissonian amplitude for phantom model}%
+{$\mathrm{J}_{2n+1}$, with $\lambda = 2\varkappa^{1/2}$,
+$V = +\varkappa^{-2}$ and $\overline{k}_\beta = 8$}
+\begin{columns}
+\begin{column}{.49\textwidth}
+\begin{block}{Schrödinger}
+%\only<1>{
+%\includegraphics[width=\textwidth]{../plots.paper.nb/naive_cos_1_2d_m.pdf}}
+%\only<2>{
+%\includegraphics[width=\textwidth]{../plots.paper.nb/naive_cos_1_3d_m.pdf}}
+\end{block}
+\end{column}
+\begin{column}{.49\textwidth}
+\begin{block}{Mostafazadeh}
+%\only<1>{
+%\includegraphics[width=\textwidth]{../plots.paper.nb/mosta_cos_1_2d_m.pdf}}
+%\only<2>{
+%\includegraphics[width=\textwidth]{../plots.paper.nb/mosta_cos_1_3d_m.pdf}}
+\end{block}
+\end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}%
+{Wave packets of Gaussian amplitude for phantom model}%
+{$\mathrm{J}_{\nu}$, with $\lambda = 2\varkappa^{1/2}$,
+$V = +\varkappa^{-2}$, $\overline{k}_\beta = 8$ and $\sigma_\beta = 11/2$}
+\begin{columns}
+\begin{column}{.49\textwidth}
+\begin{block}{Schrödinger}
+%\only<1>{
+%\includegraphics[width=\textwidth]{../plots.paper.nb/naive_cos_gauss_2d.pdf}}
+%\only<2>{
+%\includegraphics[width=\textwidth]{../plots.paper.nb/naive_cos_gauss_3d.pdf}}
+\end{block}
+\end{column}
+\begin{column}{.49\textwidth}
+\begin{block}{Mostafazadeh}
+%\only<1>{
+%\includegraphics[width=\textwidth]{../plots.paper.nb/mosta_cos_gauss_2d.pdf}}
+%\only<2>{
+%\includegraphics[width=\textwidth]{../plots.paper.nb/mosta_cos_gauss_3d.pdf}}
+\end{block}
+\end{column}
+\end{columns}
+\end{frame}
+
+\section{Conclusions}
+
+\begin{frame}%
+{Highlights}%
+%{233}
+\begin{itemize}
+\item An \alert{integral of motion} was found for Liouville cosmological
+models.
+\item \alert{Implicit trajectories} in minisuperspace were obtained.
+\item The levels of phantom Liouville model were found to be \alert{discrete}
+due to the Hermiticity requirement of observables.
+\item The semi-classical quantum mode functions and wave packets was compared
+directly with the classical trajectory.
+\end{itemize}
+\end{frame}
+
+\begin{frame}%
+{Issues}%
+%{233}
+\begin{itemize}
+%\item Dimension of wave packets sloppy
+\item In $\rbr{+,-}$ and $\rbr{-,+}$, wave packets contain multiple branches;
+however, the classical universe runs only on one trajectory.
+\item Quantum-corrected $\overline{k}_\beta$ is to be understood.
+\item Wave packets with Gaussian profile are to be constructed, instead of
+inserting Gaussian / Poissonian amplitude artificially.
+\item A normalising $\kappa$ for $\rbr{\cdot,\cdot}_\text{M}^\kappa$ is to be 
+evaluated, otherwise a quantitative comparison of
+$\rbr{\cdot,\cdot}_\text{S}$ and $\rbr{\cdot,\cdot}_\text{M}^\kappa$ is not
+possible.
+\end{itemize}
+\end{frame}
+
+\begin{frame}%
+{Outlook}%
+%{233}
+\begin{itemize}
+\item Beyond isotropy: generalise to Bianchi models
+\begin{itemize}
+\item Bianchi Type-I: a natural extension, \alert{under investigation}
+\end{itemize}
+
+\item Beyond homogeneity: cosmological perturbation,
+\alert{under investigation}
+
+\item Beyond single field
+\begin{itemize}
+\item Two exponential potentials: $\vbr{V_1} = \vbr{V_2}$ and special 
+$\lambda_i$
+\item Multiple Liouville fields: mixing kinetic
+terms needed%\footfullcite{Andrianov2015}
+\end{itemize}
+
+\item Beyond classic matter
+\begin{itemize}
+\item $PT$-symmetric Liouville 
+field%\footfullcite{ANDRIANOV2010,Andrianov2016}: 
+may cross the phantom divide $w = -1$.
+\end{itemize}
+
+\end{itemize}
+\end{frame}
+
+
+
+
+%\begin{frame}[fragile]
+%  \frametitle{Laden des Themes}
+%  \begin{block}{Das Theme kann mit den folgenden Optionen geladen werden}
+%    \begin{small}
+%\begin{verbatim}
+%\usetheme[%
+%% uk,      %% Farben aller Fakultaeten
+%wiso,     %% Wiso-Fakultaet
+%% jura,    %% Rechtswissenschaftliche Fakultaet
+%% medizin, %% Medizinische Fakultaet
+%% philo,   %% Philosophische Fakultaet
+%% matnat,  %% Mathematisch-Naturwissenschaftliche Fakultaet
+%% human,   %% Humanwissenschaftliche Fakultaet
+%% verw,    %% Universitaetsverwaltung
+%%]{UzK}
+%\end{verbatim}
+%    \end{small}
+%
+%  \end{block}
+%\end{frame}
+
+% \begin{frame}
+%   \frametitle{Die Fußzeile}
+% 
+%   \begin{itemize}
+%   \item Es stehen verschiedene Fußzeilen zur Auswahl, die als Option
+%     beim Laden des \emph{themes} übergeben werden:
+%     \begin{itemize}
+%     \item Balken mit allen Fakultätsfarben (Option \texttt{uk})
+%     \item Balken in jeweils einer Fakultätsfarbe (Optionen \texttt{wiso, jura,
+%         medizin, philo, matnat, human, verw})\footnote{Es werden die 
+% offiziellen
+%         RGB-Werte aus dem 2-D Handbuch Corporate Design verwendet.}
+%     \end{itemize}
+%   \item "`Universität zu Köln"' sowie der Name der Fakultät sind im
+%     Theme definiert, das Institut oder Seminar kann mit dem Befehl
+%     \texttt{\textbackslash institute\{\}} festgelegt werden
+%   \item Die Optionen sind im Quellcode dieser Präsentation dokumentiert
+%   \end{itemize}
+
+% \end{frame}
+
+% \begin{frame}
+%   \frametitle{Englische Präsentationen}
+%   \begin{itemize}
+%   \item Der Universitäts- sowie die Fakultätsnamen werden
+%     standardmäßig auf Deutsch angezeigt.
+%   \item Übergeben Sie dem Paket \texttt{babel} die Option
+%     \texttt{english}, so werden diese Namen entsprechen angepasst.
+%   \item Die Übersetzungen können in der Theme-Datei
+%     \texttt{beamerthemeUzK.sty} geändert werden
+%   \end{itemize}
+% 
+% \end{frame}
+
+%\begin{frame}
+%  \frametitle{\texttt{block}-Umgebungen}
+%  \begin{block}{Standard (\texttt{block})}
+%    Verwendet die Farbe "`Blaugrau Mittel"' als Blocktitel-Hintergrund
+%  \end{block}
+%
+%  \begin{exampleblock}{\texttt{exampleblock}}
+%    Bei Verwendung der Fußzeile mit allen Fakultätsfarben
+%    Titelhintergrund in Wiso-Grün, sonst in der jeweiligen
+%    Fakultätsfarbe
+%  \end{exampleblock}
+%
+%  \begin{alertblock}{\texttt{alertblock}}
+%    Verwendet das Rot der Folientitel
+%  \end{alertblock}
+%
+%\end{frame}
+
+
+% \begin{frame}
+%   \frametitle{Installation}
+%   \begin{itemize}
+%   \item Das Theme besteht aus den Dateien
+%     \texttt{beamerthemeUzK.sty} und \texttt{beamercolorthemeUzK.sty}
+%     sowie den Grafikdateien \texttt{logo.pdf} und
+%     \texttt{logo-small.pdf}.
+%   \item Das Theme kann auf zwei Arten verwendet werden:
+%     \begin{enumerate}
+%     \item Die vier Dateien werden in den selben Ordner wie die zu
+%       erstellende Präsentation gelegt
+%     \item Die vier Dateien werden im lokalen \emph{texmf}-Baum abgelegt
+%     \end{enumerate}
+%   \item Die zweite Variante ist der ersten vorzuziehen, da das Theme
+%     so an einem zentralen Ort vorliegt
+%   \end{itemize}
+% \end{frame}
+
+
+% \begin{frame}
+%   \frametitle{ToDo}
+% 
+%   \begin{block}{Was noch zu tun ist\ldots}
+%     \begin{itemize}
+%     \item Erstellen einer eigenen Titelseite
+%     \item \ldots
+%     \end{itemize}
+%   \end{block}
+% 
+% \end{frame}
+
+\end{document}
